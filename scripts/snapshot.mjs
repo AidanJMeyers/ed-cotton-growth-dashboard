@@ -47,7 +47,8 @@ function credentials() {
       key = key || (cfg.match(/SUPABASE_ANON_KEY:\s*"([^"]*)"/) || [])[1] || "";
     } catch { /* config.js is optional if env vars are set */ }
   }
-  return { url: url.replace(/\/+$/, ""), key };
+  // tolerate a Project URL pasted with the API path already on it
+  return { url: url.trim().replace(/\/+$/, "").replace(/\/rest\/v1$/, ""), key: key.trim() };
 }
 
 /* ---------- fetching ---------- */

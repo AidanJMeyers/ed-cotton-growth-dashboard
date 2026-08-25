@@ -2194,7 +2194,10 @@ async function boot() {
   if (!S.who) { S.who = people[0]; $("#who").value = S.who; }
 
   if (CFG.SUPABASE_URL && CFG.SUPABASE_ANON_KEY && window.supabase) {
-    try { S.cloud = window.supabase.createClient(CFG.SUPABASE_URL, CFG.SUPABASE_ANON_KEY, { auth: { persistSession: false } }); }
+    // The dashboard shows the API path on some screens, so "/rest/v1/" gets
+    // pasted in by mistake. supabase-js adds it itself — strip it back off.
+    const base = CFG.SUPABASE_URL.trim().replace(/\/+$/, "").replace(/\/rest\/v1$/, "");
+    try { S.cloud = window.supabase.createClient(base, CFG.SUPABASE_ANON_KEY.trim(), { auth: { persistSession: false } }); }
     catch (e) { console.warn("Supabase client failed", e); }
   }
 
