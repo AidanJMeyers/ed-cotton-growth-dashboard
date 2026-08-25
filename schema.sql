@@ -206,6 +206,82 @@ create policy "files_bucket_read"   on storage.objects for select using (bucket_
 create policy "files_bucket_write"  on storage.objects for insert with check (bucket_id = 'files');
 create policy "files_bucket_update" on storage.objects for update using (bucket_id = 'files') with check (bucket_id = 'files');
 
+-- ---------- audit trail ----------
+-- Every write is recorded server-side by a trigger, so the log cannot be
+-- skipped or faked by the browser. This is what gets exported to the repo
+-- as data/audit_log.csv: who changed what, and when.
+alter table public.plants add column if not exists updated_by text;
+
+create table if not exists public.audit_log (
+  id       bigserial   primary key,
+  at       timestamptz not null default now(),
+  actor    text,                              -- the name selected in "Logging as"
+  action   text        not null,              -- insert | update | delete
+  tbl      text        not null,
+  row_key  text,                              -- human-readable: "2026-09-01 / plant 3"
+  changes  jsonb                              -- inserted row, or just the fields that changed
+);
+create index if not exists audit_at_idx on public.audit_log (at desc);
+
+alter table public.audit_log enable row level security;
+drop policy if exists "audit_read" on public.audit_log;
+create policy "audit_read" on public.audit_log for select using (true);
+-- No insert/update/delete policy on purpose: rows can ONLY arrive via the
+-- trigger below, which runs as the table owner and bypasses RLS.
+
+create or replace function public.audit_row()
+returns trigger language plpgsql security definer set search_path = public as $fn$
+declare
+  n    jsonb := case when TG_OP = 'DELETE' then to_jsonb(OLD) else to_jsonb(NEW) end;
+  o    jsonb := case when TG_OP = 'UPDATE' then to_jsonb(OLD) else null end;
+  diff jsonb := '{}'::jsonb;
+  k    text;
+begin
+  if TG_OP = 'UPDATE' then
+    for k in select jsonb_object_keys(n) loop
+      if k <> 'updated_at' and (n -> k) is distinct from (o -> k) then
+        diff := diff || jsonb_build_object(k, n -> k);
+      end if;
+    end loop;
+    if diff = '{}'::jsonb then return null; end if;   -- a touch with no real change
+  else
+    diff := n;
+  end if;
+
+  insert into public.audit_log (actor, action, tbl, row_key, changes)
+  values (
+    coalesce(n ->> 'recorded_by', n ->> 'uploaded_by', n ->> 'updated_by', 'unknown'),
+    lower(TG_OP),
+    TG_TABLE_NAME,
+    case TG_TABLE_NAME
+      when 'measurements' then (n ->> 'obs_date') || ' / plant ' || (n ->> 'plant_id')
+      when 'doses'        then (n ->> 'dose_date') || ' / plant ' || (n ->> 'plant_id')
+      when 'plants'       then 'plant ' || (n ->> 'id') || ' (' || coalesce(n ->> 'label', '') || ')'
+      when 'day_log'      then (n ->> 'log_date')
+      when 'files'        then coalesce(n ->> 'name', n ->> 'path')
+      when 'weather_daily' then (n ->> 'wx_date')
+      else coalesce(n ->> 'id', '')
+    end,
+    diff
+  );
+  return null;
+end
+$fn$;
+
+do $do$
+declare t text;
+begin
+  foreach t in array array['plants', 'measurements', 'doses', 'day_log', 'files'] loop
+    execute format('drop trigger if exists audit_%1$s on public.%1$s', t);
+    execute format(
+      'create trigger audit_%1$s after insert or update or delete on public.%1$s
+         for each row execute function public.audit_row()', t);
+  end loop;
+end
+$do$;
+-- Weather is machine-fetched, so it is deliberately NOT audited — it would
+-- bury the human entries under thousands of automatic rows.
+
 -- ---------- realtime ----------
 -- So a second device (or Dr. Melaram watching) updates live.
 do $do$

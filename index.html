@@ -253,7 +253,7 @@
     <button data-v="plants">Plants<span class="count" id="cntPlants">0</span></button>
     <button data-v="weather">Weather</button>
     <button data-v="data">Data &amp; export</button>
-    <button data-v="update">Weekly update</button>
+    <button data-v="update">Status update</button>
     <button data-v="files">Files</button>
     <button data-v="setup">Setup</button>
     <button data-v="help">How to use</button>
@@ -375,16 +375,28 @@
 
   <!-- ================= WEEKLY UPDATE ================= -->
   <section class="view" id="v-update">
-    <h2 class="sec">Weekly update</h2>
-    <p class="lede">A written summary of the last stretch of data — what grew, what was dosed, what the weather did, and anything that moved the wrong way. Copy it straight into an email to your mentors.</p>
+    <h2 class="sec">Status update</h2>
+    <p class="lede">Where every plant stands right now, and how far it has moved. Pick a window and the whole summary rewrites itself — growth per group, what was dosed, what the weather did, and anything heading the wrong way. Copy it straight into an email.</p>
     <div class="card toolbar">
-      <div><label class="fld" for="uFrom">From</label><input type="date" id="uFrom"></div>
-      <div><label class="fld" for="uTo">To</label><input type="date" id="uTo"></div>
+      <div>
+        <label class="fld">Window</label>
+        <div class="picks" id="uWin">
+          <button class="pick on" data-days="7">Last 7 days</button>
+          <button class="pick" data-days="30">Last 30 days</button>
+          <button class="pick" data-days="all">Whole trial</button>
+          <button class="pick" data-days="custom">Custom…</button>
+        </div>
+      </div>
+      <div id="uCustom" style="display:none">
+        <label class="fld" for="uFrom">From</label><input type="date" id="uFrom">
+      </div>
+      <div id="uCustom2" style="display:none">
+        <label class="fld" for="uTo">To</label><input type="date" id="uTo">
+      </div>
       <div><label class="fld" for="uGroup">Report by</label>
         <select id="uGroup"><option value="treatment">Treatment group</option><option value="plant">Every plant</option></select>
       </div>
       <div class="grow">
-        <button class="btn ghost" id="uGen">Regenerate</button>
         <button class="btn" id="uCopy">Copy to clipboard</button>
         <button class="btn ghost" id="uTxt">&#8681; .txt</button>
       </div>
@@ -395,7 +407,7 @@
   <!-- ================= FILES ================= -->
   <section class="view" id="v-files">
     <h2 class="sec">Working documents</h2>
-    <p class="lede">Put your analysis workbook here and this link becomes the one place anyone can go: they see the live data, and they can download whatever version of your Excel you last uploaded. Protocols and photos are welcome too.</p>
+    <p class="lede">Put your analysis workbook here and this link becomes the one place anyone can go: they see the live data, and they can download whatever version of your Excel you last uploaded. Protocols and photos are welcome too. Upload a new version whenever you update it — old versions are never overwritten, and every one is copied into the GitHub repo twice a day, so the full history of your analysis is kept.</p>
     <div class="drop" id="drop">
       <b>Drop a file here</b><br>or <button class="btn ghost sm" id="fPick" style="margin-top:8px">choose a file</button>
       <input type="file" id="fInput" style="display:none">
@@ -457,6 +469,16 @@
       </div>
 
       <div class="card panel">
+        <h3>Permanent record</h3>
+        <p>Twice a day everything is copied out of the database into files in the GitHub repo — CSVs, a full snapshot, dated backups, your uploaded analysis files, and the log of who changed what. Nothing here needs doing by hand.</p>
+        <div id="sSnap"><div class="kv"><span>Last snapshot</span><b>checking…</b></div></div>
+        <div class="row" style="margin-top:12px">
+          <button class="btn ghost sm" id="sSnapRefresh">Check again</button>
+          <a class="btn ghost sm" id="sSnapLink" href="#" target="_blank" rel="noopener" style="display:none">Open the data folder</a>
+        </div>
+      </div>
+
+      <div class="card panel">
         <h3>Practice mode</h3>
         <p>Loads a sample trial — 12 plants, three weeks of readings, two dosing rounds — so you can click around and try everything without touching real data. Clearing it puts things back exactly as they were.</p>
         <div class="row">
@@ -509,8 +531,8 @@
       </ol>
       <p class="lede">Every growth row already carries that day's weather and heat units beside it, so there is no VLOOKUP to do. <b>Weather</b> has its own export if you only want the conditions.</p>
 
-      <h3>The weekly email</h3>
-      <p class="lede"><b>Weekly update</b> writes the summary for you — growth per group, what was dosed, the weather, and anything that moved backwards. Press <b>Copy to clipboard</b> and paste it into an email.</p>
+      <h3>The status email</h3>
+      <p class="lede"><b>Status update</b> writes the summary for you. Pick a window — last 7 days, last 30 days, or the whole trial — and it rewrites instantly: where every group stands now, how far it moved, what was dosed, the weather, and anything heading the wrong way. Press <b>Copy to clipboard</b> and paste it into an email.</p>
 
       <h3>Your working file</h3>
       <p class="lede">Upload your analysis workbook under <b>Files</b> whenever you update it. Anyone you send this link to can then see the live data and download your latest analysis without you emailing anything.</p>
@@ -522,6 +544,7 @@
         <li><b>Leaves are a total count</b> — how many are on the plant right now, not how many appeared. A drop from 6 to 4 is real data.</li>
         <li><b>Nothing is deleted by accident.</b> The only removal is the small "clear" link on one card, and it asks first. Retiring a plant keeps all its history.</li>
         <li><b>Practice first.</b> Setup &rsaquo; <b>Load sample data</b> gives you a full fake trial to click around in, and clearing it leaves your real data untouched.</li>
+        <li><b>It backs itself up.</b> Twice a day everything is written into permanent files on GitHub — every reading, your uploaded analysis files, and a log of who changed what and when. Setup &rsaquo; <b>Permanent record</b> shows when that last happened. You cannot lose this data by dropping your phone.</li>
       </ul>
     </div>
   </section>
@@ -565,7 +588,7 @@
      1 config + state    2 helpers      3 storage (local + cloud)
      4 load/merge        5 weather      6 schedule + doses
      7 Log view          8 Plants       9 Plant detail
-    10 Weather view     11 Data+Excel  12 Weekly update
+    10 Weather view     11 Data+Excel  12 Status update
     13 Files            14 Setup       15 boot
    ============================================================ */
 
@@ -658,6 +681,7 @@ function cacheAll() {
 /* Local cache first — a reading is never lost to a dead connection. */
 function save(table, row) {
   row.updated_at = nowISO();
+  if (table === "plants") row.updated_by = S.who || null;   // so the audit trail names who changed it
   const t = TABLES[table];
   if (t.map) S[t.map].set(t.keyOf(row), row);
   cacheAll();
@@ -673,7 +697,7 @@ function push(table, row) {
 function saveMany(table, rows) {
   if (!rows.length) return Promise.resolve();
   const t = TABLES[table];
-  rows.forEach(r => { r.updated_at = nowISO(); if (t.map) S[t.map].set(t.keyOf(r), r); });
+  rows.forEach(r => { r.updated_at = nowISO(); if (table === "plants") r.updated_by = S.who || null; if (t.map) S[t.map].set(t.keyOf(r), r); });
   cacheAll();
   if (!S.cloud || S.demo) return Promise.resolve();
   const clean = rows.map(r => { const c = Object.assign({}, r); if (table === "doses") delete c.id; return c; });
@@ -1720,51 +1744,94 @@ function wireWeather() {
   };
 }
 
-/* ---------- 12. weekly update ---------- */
+/* ---------- 12. status update ---------- */
+/* Every reading a plant has for one measurement, oldest first. */
+function seriesFor(id, k) {
+  const out = [];
+  S.meas.forEach(m => { if (Number(m.plant_id) === Number(id) && m[k] != null) out.push({ d: m.obs_date, v: Number(m[k]) }); });
+  return out.sort((a, b) => a.d < b.d ? -1 : 1);
+}
+/* Where a group stands now, and where it stood at the start of the window.
+   "Now" is each plant's most recent reading, even if that predates the window,
+   so a fortnightly ceptometer number still shows up in a 7-day report. */
+function groupStat(ids, k, from, to) {
+  const now = [], before = [];
+  let latestDate = "";
+  ids.forEach(id => {
+    const s = seriesFor(id, k);
+    if (!s.length) return;
+    const cur = s.filter(x => x.d <= to).pop();
+    if (!cur) return;
+    now.push(cur.v);
+    if (cur.d > latestDate) latestDate = cur.d;
+    const base = s.filter(x => x.d <= from).pop() || s[0];
+    if (base && base.d !== cur.d) before.push(base.v);
+  });
+  if (!now.length) return null;
+  const a = before.length ? mean(before) : null, b = mean(now);
+  return { now: b, then: a, n: now.length, date: latestDate,
+           diff: a == null ? null : b - a, pct: a ? (b - a) / Math.abs(a) * 100 : null };
+}
 function buildUpdate() {
-  const from = $("#uFrom").value || addDays(today(), -6), to = $("#uTo").value || today();
+  const win = $("#uWin").dataset.days || "7";
+  let from, to = today();
+  if (win === "all") from = startDate();
+  else if (win === "custom") { from = $("#uFrom").value || addDays(today(), -6); to = $("#uTo").value || today(); }
+  else from = addDays(today(), -(Number(win) - 1));
+  // don't reach back past the trial start — a 30-day window on a 20-day trial
+  // would otherwise measure growth from nothing and report silly percentages
+  const clamped = from < startDate();
+  if (clamped) from = startDate();
   const byPlant = $("#uGroup").value === "plant";
   const f = { from: from, to: to, plant: "", trt: "" };
   const rows = growthRows(f);
   const L = [];
-  const title = CFG.STUDY_NAME + " — update for " + fmtShort(from) + " to " + fmtShort(to);
+  const winLabel = win === "all" ? "the whole trial" : win === "custom" ? fmtShort(from) + " – " + fmtShort(to) : "the last " + win + " days";
+  const title = CFG.STUDY_NAME + " — status as of " + fmtDay(to);
   L.push(title);
   L.push("=".repeat(title.length));
-  L.push("Trial day " + dap(from) + " to " + dap(to) + " · " + plantsActive().length + " plants" + (CFG.SITE_NAME ? " · " + CFG.SITE_NAME : ""));
+  L.push("Trial day " + dap(to) + " · " + plantsActive().length + " plants" + (CFG.SITE_NAME ? " · " + CFG.SITE_NAME : ""));
+  L.push("Window: " + winLabel + " (" + fmtShort(from) + " – " + fmtShort(to) + ")" +
+         (clamped ? " — the trial is only " + (dap(to) + 1) + " days old, so this is everything so far" : ""));
+  L.push("");
+
+  const groups = byPlant
+    ? plantsActive().map(p => ({ name: p.label + " (" + (p.treatment || "unassigned") + ")", ids: [p.id] }))
+    : (TRTS.length ? TRTS.map(t => ({ name: t.name, ids: plantsActive().filter(p => p.treatment === t.name).map(p => p.id) }))
+                   : [{ name: "All plants", ids: plantsActive().map(p => p.id) }]);
+
+  L.push("WHERE THE PLANTS ARE NOW" + (byPlant ? "" : ", BY TREATMENT GROUP"));
+  L.push("  (current value, then the change across " + winLabel + ")");
+  groups.forEach(g => {
+    if (!g.ids.length) return;
+    L.push("");
+    L.push("  " + g.name + " — " + g.ids.length + " plant" + (g.ids.length === 1 ? "" : "s"));
+    let any = false;
+    MKEYS.forEach(k => {
+      const st = groupStat(g.ids, k, from, to);
+      if (!st) return;
+      any = true;
+      const m = CFG.MEASURES[k], u = unitOf(k) ? " " + unitOf(k) : "";
+      let chg = "no earlier reading to compare";
+      if (st.diff != null) {
+        const d = (st.diff >= 0 ? "+" : "") + rN(st.diff, 1);
+        chg = (m.delta === "abs" || st.pct == null) ? d : d + " (" + (st.pct >= 0 ? "+" : "") + rN(st.pct, 0) + "%)";
+      }
+      L.push("      " + (m.label + ":").padEnd(11) + String(rN(st.now, 1) + u).padEnd(12) + chg.padEnd(16) +
+             (st.date !== to ? " last read " + fmtShort(st.date) : ""));
+    });
+    if (!any) L.push("      nothing recorded yet");
+  });
   L.push("");
 
   const days = Array.from(new Set(rows.map(r => r.date))).sort();
   const span = daysBetween(from, to) + 1;
   L.push("COVERAGE");
   L.push("  Readings on " + days.length + " of " + span + " days" + (days.length ? " (" + fmtShort(days[0]) + " – " + fmtShort(days[days.length - 1]) + ")" : ""));
-  L.push("  " + rows.length + " plant-days recorded");
+  L.push("  " + rows.length + " plant-days recorded in this window");
   const missing = [];
   for (let d = from; d <= to && d <= today(); d = addDays(d, 1)) if (!days.includes(d)) missing.push(fmtShort(d));
   if (missing.length) L.push("  No readings: " + missing.join(", "));
-  L.push("");
-
-  // growth block
-  const groups = byPlant
-    ? plantsActive().map(p => ({ name: p.label, rows: rows.filter(r => r.plant === p.label) }))
-    : (TRTS.length ? TRTS : [{ name: "" }]).map(t => ({ name: t.name || "All plants", rows: rows.filter(r => (r.treatment || "") === (t.name || "")) }));
-  L.push("GROWTH" + (byPlant ? " BY PLANT" : " BY TREATMENT GROUP"));
-  groups.forEach(g => {
-    if (!g.rows.length) { L.push("  " + g.name + ": no readings this period"); return; }
-    const n = new Set(g.rows.map(r => r.plant)).size;
-    const bits = [];
-    MKEYS.forEach(k => {
-      const has = g.rows.filter(r => r[k] != null);
-      if (!has.length) return;
-      const firstDay = has[0].date, lastDay = has[has.length - 1].date;
-      const a = mean(has.filter(r => r.date === firstDay).map(r => Number(r[k])));
-      const b = mean(has.filter(r => r.date === lastDay).map(r => Number(r[k])));
-      const lab = CFG.MEASURES[k].label.toLowerCase();
-      if (firstDay === lastDay) { bits.push(lab + " " + rN(b, 1)); return; }
-      const chg = b - a, pct = a ? chg / Math.abs(a) * 100 : null;
-      bits.push(lab + " " + rN(a, 1) + " → " + rN(b, 1) + " (" + (chg >= 0 ? "+" : "") + rN(chg, 1) + (pct != null ? ", " + (pct >= 0 ? "+" : "") + rN(pct, 0) + "%" : "") + ")");
-    });
-    L.push("  " + g.name + " (" + n + " plant" + (n === 1 ? "" : "s") + "): " + (bits.length ? bits.join("; ") : "logged, no numbers"));
-  });
   L.push("");
 
   // dosing
@@ -1820,13 +1887,23 @@ function buildUpdate() {
   S.days.forEach(d => { if (d.log_date >= from && d.log_date <= to && d.notes) notes.push("  " + fmtShort(d.log_date) + ": " + d.notes); });
   if (notes.length) { L.push("FIELD NOTES"); L.push.apply(L, notes.sort()); L.push(""); }
 
-  L.push("Live data and full export: " + location.href.split("#")[0]);
+  L.push("Live data and full export: " + location.origin + location.pathname);
   if (S.demo) L.push("*** SAMPLE DATA — not real trial results ***");
   return L.join("\n");
 }
 function renderUpdate() { $("#uOut").textContent = buildUpdate(); }
 function wireUpdate() {
-  $("#uGen").onclick = renderUpdate;
+  $("#uWin").dataset.days = "7";
+  $("#uWin").onclick = e => {
+    const b = e.target.closest("[data-days]"); if (!b) return;
+    const d = b.dataset.days;
+    $$("#uWin .pick").forEach(x => x.classList.toggle("on", x === b));
+    $("#uWin").dataset.days = d;
+    const custom = d === "custom";
+    $("#uCustom").style.display = $("#uCustom2").style.display = custom ? "" : "none";
+    if (custom && !$("#uFrom").value) { $("#uFrom").value = addDays(today(), -6); $("#uTo").value = today(); }
+    renderUpdate();
+  };
   ["uFrom", "uTo", "uGroup"].forEach(id => $("#" + id).onchange = renderUpdate);
   $("#uCopy").onclick = async () => {
     const txt = $("#uOut").textContent;
@@ -1851,8 +1928,11 @@ function renderFiles() {
     return;
   }
   if (!S.files.length) { list.innerHTML = '<li style="display:block;color:var(--slate)">Nothing uploaded yet. Your working analysis file belongs here.</li>'; return; }
+  const newestWorking = (S.files.filter(f => f.kind === "working")[0] || {}).id;
   list.innerHTML = S.files.map(f =>
-    '<li><span class="kindtag">' + esc(f.kind || "file") + '</span><span><span class="fn">' + esc(f.name) + "</span>" +
+    '<li><span class="kindtag">' + esc(f.kind || "file") + "</span>" +
+    (f.id === newestWorking ? '<span class="kindtag" style="background:var(--clay-lt);color:var(--clay)">latest</span>' : "") +
+    '<span><span class="fn">' + esc(f.name) + "</span>" +
     '<span class="fm"> · ' + fmtBytes(f.size_bytes) + " · " + new Date(f.created_at).toLocaleDateString() + (f.uploaded_by ? " · " + esc(f.uploaded_by) : "") + "</span>" +
     (f.note ? '<br><span class="fm">' + esc(f.note) + "</span>" : "") + "</span>" +
     '<span class="sp"><a class="btn ghost sm" href="' + fileURL(f.path) + '" target="_blank" rel="noopener">Download</a>' +
@@ -1900,6 +1980,7 @@ function renderSetup() {
   $("#sNObs").textContent = S.meas.size;
   $("#sNDose").textContent = S.doses.size;
   $("#sNQueue").textContent = S.outbox.length;
+  renderSnapshot();
   $("#sModeTxt").innerHTML = S.cloud
     ? "Shared: everything syncs to Supabase, so the same log opens on any device and anyone with the link sees it."
     : "On this device only. Data is saved in this browser — it survives closing the tab, but it does not follow you to another phone or computer, and file uploads are off. Ask Aidan to add the two Supabase values to <code>config.js</code> to switch that on.";
@@ -1911,6 +1992,33 @@ function renderSetup() {
     if (m.postDose) when += ", plus " + CFG.POST_DOSE_DAYS + " days after each dose";
     return '<div class="kv"><span>' + esc(m.label) + (m.unit ? ' <span style="color:var(--faint)">(' + esc(m.unit) + ")</span>" : "") + "</span><b>" + esc(when) + "</b></div>";
   }).join("");
+}
+/* Read the manifest the snapshot job commits, so Setup can show whether the
+   permanent copy is actually keeping up. Fails quietly when opened locally. */
+async function renderSnapshot() {
+  const box = $("#sSnap"); if (!box) return;
+  const kv = (k, v) => '<div class="kv"><span>' + k + "</span><b>" + v + "</b></div>";
+  try {
+    const res = await fetch("data/manifest.json?t=" + Date.now(), { cache: "no-store" });
+    if (!res.ok) throw new Error("no manifest");
+    const m = await res.json();
+    const ageH = (Date.now() - Date.parse(m.generated_at)) / 3600000;
+    const age = ageH < 1 ? "just now" : ageH < 48 ? Math.round(ageH) + " hours ago" : Math.round(ageH / 24) + " days ago";
+    const who = Object.entries(m.active_last_7_days || {});
+    box.innerHTML =
+      kv("Last snapshot", new Date(m.generated_at).toLocaleString() + " (" + age + ")") +
+      kv("Rows saved to files", (m.counts.measurements || 0) + " plant-days · " + (m.counts.doses || 0) + " doses") +
+      kv("Changes logged", (m.counts.audit_log || 0)) +
+      kv("Dated backups kept", m.backups) +
+      kv("Analysis files mirrored", m.analysis ? m.analysis.total : 0) +
+      (who.length ? kv("Active this week", who.map(w => w[0] + " (" + w[1] + ")").join(", ")) : "") +
+      (ageH > 36 ? '<div class="msg on err" style="margin-top:10px">The last snapshot is over a day and a half old — the backup job may have stopped. Tell Aidan.</div>' : "");
+    const link = $("#sSnapLink");
+    if (link) { link.href = "data/"; link.style.display = ""; }
+  } catch (e) {
+    box.innerHTML = kv("Last snapshot", "not available here") +
+      '<p style="margin:8px 0 0;font-size:12.5px">This panel reads a file that the published site has and a local copy does not. On the real link it shows when the data was last written to GitHub.</p>';
+  }
 }
 function backup() {
   const data = { version: 2, app: "cotton-field-log", exported: nowISO(), demo: S.demo,
@@ -1926,7 +2034,8 @@ async function restore(text) {
   (d.measurements || []).forEach(r => S.meas.set(mk(r.obs_date, r.plant_id), r));
   (d.doses || []).forEach(r => S.doses.set(mk(r.dose_date, r.plant_id), r));
   (d.day_log || []).forEach(r => S.days.set(r.log_date, r));
-  (d.weather || []).forEach(r => S.wx.set(r.wx_date, r));
+  // "weather" from an in-app backup, "weather_daily" from a repo snapshot
+  (d.weather || d.weather_daily || []).forEach(r => S.wx.set(r.wx_date, r));
   if (d.settings) S.settings = Object.assign({}, S.settings, d.settings);
   cacheAll();
   if (S.cloud && !S.demo) {
@@ -2038,6 +2147,7 @@ function wireSetup() {
     r.onload = async () => { try { await restore(String(r.result)); flash("#sSyncMsg", "ok", "Restored from " + f.name + "."); } catch (err) { flash("#sSyncMsg", "err", err.message); } };
     r.readAsText(f); e.target.value = "";
   };
+  $("#sSnapRefresh").onclick = renderSnapshot;
   $("#sDemo").onclick = demoOn;
   $("#sDemoOff").onclick = demoOff;
 }

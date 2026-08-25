@@ -1,0 +1,57 @@
+name: Snapshot data to the repo
+
+# The live database is convenient; git is permanent. This job copies everything
+# out of Supabase into data/ as plain files, so the trial has a durable record
+# with full history of who changed what and when.
+on:
+  schedule:
+    - cron: "17 11 * * *"     # 06:17 America/Chicago (CDT) — after morning readings
+    - cron: "17 23 * * *"     # 18:17 America/Chicago (CDT) — after evening readings
+  workflow_dispatch:           # "Run workflow" button, any time you want one now
+
+permissions:
+  contents: write
+
+concurrency:
+  group: snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Pull data out of Supabase
+        id: snap
+        env:
+          # Optional. If these are not set, the script reads the same values
+          # from config.js, so there is nothing to configure twice.
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: node scripts/snapshot.mjs
+
+      - name: Commit the snapshot
+        run: |
+          git config user.name  "cotton-log bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --staged --quiet; then
+            echo "No change since the last snapshot."
+            exit 0
+          fi
+          git commit -m "data: snapshot $(date -u +%Y-%m-%d\ %H:%M) UTC" \
+                     -m "${{ steps.snap.outputs.summary }}"
+          # A logging session can land between our pull and our push, so rebase and retry.
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push && exit 0
+            echo "push attempt $i failed, retrying"
+            sleep 5
+          done
+          exit 1

@@ -138,17 +138,31 @@ You never have to fetch this. It updates itself; **Refresh weather** just forces
 
 ---
 
-## 7. The weekly email
+## 7. The status update
 
-![The weekly update generator](img/05-update.png)
+![The status update generator](img/05-update.png)
 
-**Weekly update** writes the summary for you: coverage, growth per group with percent
-changes, what was dosed, what the weather did, and a "worth a look" list of anything
-moving backwards. Press **Copy to clipboard** and paste it into an email to Dr. Melaram
-and Dr. McGinty.
+**Status update** writes the whole summary for you. Pick a window at the top — **last 7
+days**, **last 30 days**, or the **whole trial** — and it rewrites instantly.
 
-Change the dates at the top if you want a different window, or switch it to report on
-every plant individually.
+You get where every group stands *right now*, with how far it has moved across that
+window:
+
+```
+  High 5% — 4 plants
+      Height:    21.4 cm     +2.8 (+15%)
+      Leaves:    6.5         +0.8
+      SPAD:      39.5        -0.4 (-1%)      last read Aug 21
+```
+
+Then dosing, the weather, anything heading the wrong way, and your field notes. Press
+**Copy to clipboard** and paste it into an email to Dr. Melaram and Dr. McGinty.
+
+Two details: a measurement that isn't taken daily still shows its current value, with the
+date it was last read in the margin. And if you pick 30 days on a 20-day-old trial, it
+says so rather than pretending.
+
+You can also switch **Report by** to every plant individually.
 
 ---
 
@@ -157,6 +171,29 @@ every plant individually.
 Under **Files**, upload your analysis workbook whenever you update it. Anyone you send
 this link to can then see the live data *and* download your latest analysis, without you
 having to email anything. Protocols and photos can go there too.
+
+**Upload a new version every time you change it.** Nothing is overwritten — each upload
+is kept, tagged with your name and the date, and the newest working file is marked
+`latest` so nobody downloads a stale one by mistake. Twice a day all of them are copied
+into the GitHub repo, so the full history of your analysis is preserved even if something
+happens to your laptop.
+
+---
+
+## 9. Where your data is kept
+
+You do not have to do anything for this, but it is worth knowing.
+
+Everything you type goes into a shared database straight away, which is why it appears on
+every device. Twice a day, all of it is also written into permanent files on GitHub:
+spreadsheets of every reading, dated backups, your uploaded analysis files, and a log of
+every change with who made it and when.
+
+**Setup → Permanent record** shows when that last happened. If that line ever turns red,
+tell Aidan — it means the automatic backup has stopped, not that anything is lost.
+
+Practically: you cannot lose this data by dropping your phone, and if a number ever looks
+wrong, there is a record of what it was before and who changed it.
 
 ---
 
