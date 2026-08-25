@@ -1,0 +1,15 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Never commit the Supabase service_role / secret key or any env file.
+# (config.js holds only the PUBLIC anon key by design — it is committed.)
+.env
+.env.*
+secrets.*
+service_role*.txt
+
+# downloaded exports
+*.xlsx
