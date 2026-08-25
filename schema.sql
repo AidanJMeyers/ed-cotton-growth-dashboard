@@ -206,6 +206,34 @@ create policy "files_bucket_read"   on storage.objects for select using (bucket_
 create policy "files_bucket_write"  on storage.objects for insert with check (bucket_id = 'files');
 create policy "files_bucket_update" on storage.objects for update using (bucket_id = 'files') with check (bucket_id = 'files');
 
+-- ---------- amendments (reason-for-change) ----------
+-- The audit_log below records that something changed. This table records
+-- WHY, in the words of the person who changed it, with their initials and
+-- the date they signed off. The app refuses to alter or remove an already-
+-- recorded value without one of these.
+create table if not exists public.amendments (
+  id          bigserial   primary key,
+  at          timestamptz not null default now(),
+  change_date date,                            -- the date the person attests to
+  initials    text        not null,
+  actor       text,                            -- the "Logging as" name
+  action      text        not null,            -- 'edit' | 'remove'
+  tbl         text        not null,
+  row_key     text,                            -- '2026-09-01 / plant 3'
+  field       text,
+  old_value   text,
+  new_value   text,
+  reason      text        not null
+);
+create index if not exists amendments_at_idx on public.amendments (at desc);
+
+alter table public.amendments enable row level security;
+drop policy if exists "amend_read"   on public.amendments;
+drop policy if exists "amend_insert" on public.amendments;
+create policy "amend_read"   on public.amendments for select using (true);
+create policy "amend_insert" on public.amendments for insert with check (true);
+-- No update or delete policy: a reason-for-change record is permanent.
+
 -- ---------- audit trail ----------
 -- Every write is recorded server-side by a trigger, so the log cannot be
 -- skipped or faked by the browser. This is what gets exported to the repo

@@ -200,6 +200,12 @@
   .modal .box { background: var(--paper); border-radius: 14px; max-width: 560px; width: 100%; max-height: 88vh; overflow: auto; padding: 22px 24px; box-shadow: 0 20px 60px rgba(0,0,0,.28); }
   .modal h3 { font-family: 'Newsreader', serif; font-size: 21px; margin: 0 0 4px; }
   .modal p.hint { font-size: 13px; color: var(--slate); margin: 0 0 16px; }
+  .amwhat { background: var(--wash); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; font-size: 13.5px; }
+  .amwhat .lin { display: flex; align-items: baseline; gap: 8px; padding: 3px 0; font-variant-numeric: tabular-nums; }
+  .amwhat .lbl { font-weight: 600; min-width: 92px; }
+  .amwhat .was { color: var(--red); text-decoration: line-through; }
+  .amwhat .now { color: var(--green); font-weight: 600; }
+  .amwhat .ctx { font-size: 12px; color: var(--slate); margin-bottom: 7px; }
   .picks { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
   .pick { font-size: 12px; font-weight: 600; border: 1px solid var(--line); border-radius: 999px; padding: 5px 11px; cursor: pointer; background: var(--paper); }
   .pick.on { background: var(--green-deep); color: #fff; border-color: var(--green-deep); }
@@ -330,6 +336,7 @@
     <h2 class="sec">Every reading</h2>
     <p class="lede">Arrows compare each value with this plant's previous reading of the same thing. Dose days are marked.</p>
     <div class="tblwrap"><table id="pdTbl"><thead></thead><tbody></tbody></table></div>
+    <div id="pdAmend"></div>
   </section>
 
   <!-- ================= WEATHER ================= -->
@@ -537,6 +544,11 @@
       <h3>Your working file</h3>
       <p class="lede">Upload your analysis workbook under <b>Files</b> whenever you update it. Anyone you send this link to can then see the live data and download your latest analysis without you emailing anything.</p>
 
+      <h3>Fixing a number you already saved</h3>
+      <p class="lede">Type over it, or use <b>clear</b> to remove a reading entirely. If the value had already been committed — you saved it on an earlier visit, or someone else recorded it — a short box appears asking for your <b>initials</b>, the <b>date</b>, and a <b>one-line reason</b>. Nothing is saved until you fill it in, and <b>Cancel</b> puts the original value back.</p>
+      <p class="lede">Correcting something you typed in the last few minutes does not ask — that is just finishing your entry. It only asks once a reading has settled, and after a reading has been formally corrected once it will always ask again.</p>
+      <p class="lede">This is not bureaucracy for its own sake: it means every number in your dataset either came straight off the instrument or has a documented reason for being different. Corrections show up on the plant's own page, on the <b>Corrections</b> sheet of the Excel export, and in the permanent record. The original value is never lost.</p>
+
       <h3>Things worth knowing</h3>
       <ul>
         <li><b>It works without signal.</b> Anything typed in the greenhouse is held on the phone and syncs when you have bars again. The pill at the top right says when something is waiting.</li>
@@ -572,6 +584,33 @@
     <div class="row" style="margin-top:18px;justify-content:flex-end">
       <button class="btn ghost" id="mCancel">Cancel</button>
       <button class="btn clay" id="mSave">Record dose</button>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- amendment (reason-for-change) modal ---------- -->
+<div class="modal" id="amendModal">
+  <div class="box">
+    <h3 id="amTitle">Changing a recorded value</h3>
+    <p class="hint" id="amHint">This value was already saved. Recording why keeps the data defensible — it is the same standard a lab notebook is held to.</p>
+    <div id="amWhat" class="amwhat"></div>
+    <div class="row" style="margin-top:16px">
+      <div><label class="fld" for="amInitials">Your initials</label><input id="amInitials" maxlength="6" placeholder="ED" style="width:110px;text-transform:uppercase"></div>
+      <div><label class="fld" for="amDate">Date of change</label><input type="date" id="amDate"></div>
+    </div>
+    <label class="fld" style="margin-top:14px">Reason</label>
+    <div class="picks" id="amQuick">
+      <button class="pick" type="button">Transcription error</button>
+      <button class="pick" type="button">Re-measured</button>
+      <button class="pick" type="button">Wrong plant</button>
+      <button class="pick" type="button">Wrong date</button>
+      <button class="pick" type="button">Instrument error</button>
+    </div>
+    <textarea id="amReason" rows="2" style="margin-top:8px" placeholder="What happened? A few words is enough."></textarea>
+    <div class="msg" id="amMsg"></div>
+    <div class="row" style="margin-top:18px;justify-content:flex-end">
+      <button class="btn ghost" id="amCancel">Cancel, keep the original</button>
+      <button class="btn" id="amSave">Save the change</button>
     </div>
   </div>
 </div>
@@ -615,6 +654,7 @@ const S = {
   days: new Map(),     // date -> row
   wx: new Map(),       // date -> row
   files: [],
+  amendments: [],
   settings: {},
   outbox: [],
   who: "", date: "", view: "log", plantOpen: null,
@@ -743,6 +783,7 @@ function loadLocal() {
   (LS.get("days", []) || []).forEach(r => S.days.set(r.log_date, r));
   (LS.get("wx", []) || []).forEach(r => S.wx.set(r.wx_date, r));
   S.settings = LS.get("settings", {}) || {};
+  S.amendments = LS.get("amendments", []) || [];
   S.outbox = LS.get("outbox", []) || [];
   S.demo = !!LS.get("demo", false);
   S.who = LS.get("who", "") || (CFG.PEOPLE[0] || "");
@@ -756,11 +797,12 @@ function mergeInto(map, rows, keyOf) {
 async function loadCloud() {
   if (!S.cloud || S.demo) return;
   const q = t => S.cloud.from(t).select("*");
-  const [p, m, d, dl, w, st, f] = await Promise.all([
+  const [p, m, d, dl, w, st, f, am] = await Promise.all([
     q("plants"), q("measurements"), q("doses"), q("day_log"), q("weather_daily"), q("settings"),
-    S.cloud.from("files").select("*").order("created_at", { ascending: false })
+    S.cloud.from("files").select("*").order("created_at", { ascending: false }),
+    S.cloud.from("amendments").select("*").order("at", { ascending: false })
   ]);
-  const bad = [p, m, d, dl, w, st, f].find(r => r.error);
+  const bad = [p, m, d, dl, w, st, f].find(r => r.error);   // amendments checked separately: an older database may not have the table yet
   if (bad) throw bad.error;
   mergeInto(S.plants, p.data || [], r => Number(r.id));
   mergeInto(S.meas,  m.data || [], r => mk(r.obs_date, r.plant_id));
@@ -769,6 +811,7 @@ async function loadCloud() {
   mergeInto(S.wx,    w.data || [], r => r.wx_date);
   (st.data || []).forEach(r => { if (r.key === "start_date") S.settings.start_date = r.value; });
   S.files = f.data || [];
+  if (!am.error) { S.amendments = am.data || []; LS.set("amendments", S.amendments); }
   cacheAll();
 }
 
@@ -1048,19 +1091,122 @@ function collect(id) {
   });
   return row;
 }
+/* ----- reason-for-change ------------------------------------------------
+   Finishing your own entry is not an amendment; changing a number that was
+   already committed is. The grace window keeps normal typing frictionless
+   while still holding real corrections to a documented standard.          */
+const AMEND_GRACE_MIN = 15;
+function wasAmended(date, id) {
+  const re = new RegExp("^" + date + " / plant " + id + "\\b");
+  return (S.amendments || []).some(a => re.test(a.row_key || ""));
+}
+function settled(stored) {
+  if (!stored || !stored.updated_at) return false;
+  // Once a reading has been formally amended it stays under the reason
+  // requirement — the grace window is for finishing your own fresh entry,
+  // not for quietly revising something you already had to justify.
+  if (wasAmended(stored.obs_date, stored.plant_id)) return true;
+  const mins = (Date.now() - Date.parse(stored.updated_at)) / 60000;
+  return mins > AMEND_GRACE_MIN || (stored.recorded_by || "") !== (S.who || "");
+}
+/* Which already-recorded values would this save overwrite or erase? */
+function amendableChanges(id, row) {
+  const stored = measOf(S.date, id);
+  if (!settled(stored)) return [];
+  const out = [];
+  MKEYS.forEach(k => {
+    const a = stored[k], b = row ? row[k] : null;
+    if (a == null) return;                       // filling in a blank is new data, not a change
+    if (Number(a) !== Number(b)) out.push({ field: k, label: CFG.MEASURES[k].label, old: a, new: b });
+  });
+  const an = (stored.note || "").trim(), bn = ((row && row.note) || "").trim();
+  if (an && an !== bn) out.push({ field: "note", label: "Note", old: an, new: bn });
+  return out;
+}
+
 const timers = {};
+let amendCtx = null;
 function touch(id) {
   clearTimeout(timers[id]); markCard(id, "saving");
-  timers[id] = setTimeout(() => {
-    const row = collect(id); if (!row) return;
-    if (!hasData(row)) {
-      S.meas.delete(mk(S.date, id)); cacheAll();
-      if (S.cloud && !S.demo) S.cloud.rpc("clear_measurement", { p_date: S.date, p_plant: Number(id) }).then(r => { if (r.error) console.warn(r.error); });
-      const c = cardOf(id); if (c) { c.classList.remove("done"); $("[data-state]", c).textContent = ""; }
-      renderDayHead(); return;
+  timers[id] = setTimeout(() => commitPot(id), 650);
+}
+function commitPot(id) {
+  const row = collect(id); if (!row) return;
+  const changes = amendableChanges(id, row);
+  if (changes.length) { openAmend(id, row, changes, hasData(row) ? "edit" : "remove"); return; }
+  writePot(id, row);
+}
+function writePot(id, row) {
+  if (!hasData(row)) {
+    S.meas.delete(mk(S.date, id)); cacheAll();
+    if (S.cloud && !S.demo) S.cloud.rpc("clear_measurement", { p_date: S.date, p_plant: Number(id) }).then(r => { if (r.error) console.warn(r.error); });
+    const c = cardOf(id); if (c) { c.classList.remove("done"); $("[data-state]", c).textContent = ""; }
+    renderDayHead(); refreshCounts(); return;
+  }
+  save("measurements", row).then(() => { markCard(id, "saved"); renderDayHead(); paintSync(); refreshCounts(); updateDeltas(id); });
+}
+
+function openAmend(id, row, changes, action) {
+  amendCtx = { id: id, row: row, changes: changes, action: action };
+  const p = plantOf(id);
+  $("#amTitle").textContent = action === "remove" ? "Removing a recorded reading" : "Changing a recorded value";
+  $("#amHint").textContent = action === "remove"
+    ? "This reading is already on the record. Removing it needs a documented reason — the original value is kept in the log either way."
+    : "This value was already saved. Recording why keeps the data defensible — the same standard a lab notebook is held to.";
+  $("#amWhat").innerHTML = '<div class="ctx">' + esc(p.label) + " · " + fmtDay(S.date) + "</div>" +
+    changes.map(c => '<div class="lin"><span class="lbl">' + esc(c.label) + '</span><span class="was">' + esc(c.old) + "</span>" +
+      '<span style="color:var(--faint)">&rarr;</span><span class="now">' + (c.new == null || c.new === "" ? "<em>removed</em>" : esc(c.new)) + "</span></div>").join("");
+  $("#amInitials").value = LS.get("initials", "") || "";
+  $("#amDate").value = today();
+  $("#amReason").value = "";
+  $$("#amQuick .pick").forEach(b => b.classList.remove("on"));
+  $("#amendModal").classList.add("on");
+  setTimeout(() => $("#amInitials").focus(), 50);
+}
+function closeAmend(revert) {
+  $("#amendModal").classList.remove("on");
+  if (revert && amendCtx) {
+    renderCards();                                   // put the saved values back on screen
+    toast("Change discarded — the original value is unchanged");
+  }
+  amendCtx = null;
+}
+function wireAmend() {
+  $("#amQuick").onclick = e => {
+    const b = e.target.closest(".pick"); if (!b) return;
+    $$("#amQuick .pick").forEach(x => x.classList.toggle("on", x === b));
+    const t = $("#amReason");
+    t.value = t.value.trim() ? b.textContent + " — " + t.value.replace(/^.*? — /, "") : b.textContent;
+  };
+  $("#amCancel").onclick = () => closeAmend(true);
+  $("#amendModal").onclick = e => { if (e.target.id === "amendModal") closeAmend(true); };
+  $("#amSave").onclick = async () => {
+    if (!amendCtx) return;
+    const initials = $("#amInitials").value.trim().toUpperCase();
+    const reason = $("#amReason").value.trim();
+    if (initials.length < 2) { flash("#amMsg", "err", "Please enter your initials."); return; }
+    if (reason.length < 4) { flash("#amMsg", "err", "Please say briefly why this is changing."); return; }
+    LS.set("initials", initials);
+    const ctx = amendCtx;
+    const rowKey = S.date + " / plant " + ctx.id + " (" + plantOf(ctx.id).label + ")";
+    const records = ctx.changes.map(c => ({
+      change_date: $("#amDate").value || today(), initials: initials, actor: S.who || null,
+      action: ctx.action, tbl: "measurements", row_key: rowKey, field: c.field,
+      old_value: c.old == null ? null : String(c.old),
+      new_value: c.new == null || c.new === "" ? null : String(c.new),
+      reason: reason
+    }));
+    S.amendments = (S.amendments || []).concat(records.map(r => Object.assign({ at: nowISO() }, r)));
+    LS.set("amendments", S.amendments);
+    if (S.cloud && !S.demo) {
+      const res = await S.cloud.from("amendments").insert(records);
+      if (res.error) { console.warn(res.error); toast("Change saved, but the reason could not be filed — tell Aidan"); }
     }
-    save("measurements", row).then(() => { markCard(id, "saved"); renderDayHead(); paintSync(); refreshCounts(); updateDeltas(id); });
-  }, 650);
+    $("#amendModal").classList.remove("on");
+    writePot(ctx.id, ctx.row);
+    amendCtx = null;
+    toast("Change recorded with your reason");
+  };
 }
 /* Refresh only the arrows on one card, so typing never loses focus. */
 function updateDeltas(id) {
@@ -1101,10 +1247,15 @@ function wireLog() {
     }
     if (e.target.matches("[data-clear]")) {
       const c = e.target.closest(".plant"), id = c.dataset.plant;
+      const stored = measOf(S.date, id);
+      if (!hasData(stored)) return;
+      const blank = { obs_date: S.date, plant_id: Number(id), recorded_by: S.who || null, note: null };
+      MKEYS.forEach(k => blank[k] = null);
+      const changes = amendableChanges(id, blank);
+      if (changes.length) { openAmend(id, blank, changes, "remove"); return; }   // settled data: reason required
       if (!confirm("Clear everything recorded for " + plantOf(id).label + " on " + fmtDay(S.date) + "?")) return;
-      S.meas.delete(mk(S.date, id)); cacheAll();
-      if (S.cloud && !S.demo) S.cloud.rpc("clear_measurement", { p_date: S.date, p_plant: Number(id) });
-      renderCards(); renderDayHead(); refreshCounts();
+      writePot(id, blank);
+      renderCards(); renderDayHead();
     }
   });
   grid.addEventListener("keydown", e => {
@@ -1395,6 +1546,18 @@ function renderDetail() {
       "<td>" + (dz ? '<span class="tag" style="background:var(--clay-lt);color:var(--clay)">' + (dz.pct != null ? dz.pct + "%" : "dosed") + (dz.volume_ml ? " · " + dz.volume_ml + " mL" : "") + "</span>" : '<span class="dim">—</span>') + "</td>" +
       '<td class="txt">' + esc(r.note || "") + "</td></tr>";
   }).join("");
+
+  // reason-for-change record for this plant
+  const mine = (S.amendments || []).filter(a => new RegExp("plant " + id + "\\b").test(a.row_key || ""))
+    .sort((a, b) => String(b.at).localeCompare(String(a.at)));
+  $("#pdAmend").innerHTML = !mine.length ? "" :
+    '<h2 class="sec">Corrections</h2><p class="lede">Values that were changed or removed after they were first recorded, and the reason given at the time.</p>' +
+    '<div class="tblwrap"><table><thead><tr><th>When</th><th>By</th><th>What</th><th>Was</th><th>Became</th><th>Reason</th></tr></thead><tbody>' +
+    mine.map(a => "<tr><td>" + esc((a.change_date || String(a.at).slice(0, 10))) + "</td><td>" + esc(a.initials || "") + "</td>" +
+      "<td>" + esc((CFG.MEASURES[a.field] || {}).label || a.field) + "</td>" +
+      '<td class="dim">' + esc(a.old_value == null ? "—" : a.old_value) + "</td>" +
+      "<td>" + esc(a.new_value == null ? "removed" : a.new_value) + "</td>" +
+      '<td class="txt">' + esc(a.reason || "") + "</td></tr>").join("") + "</tbody></table></div>";
 }
 
 /* ---------- 10-11. rows, tables, exports ---------- */
@@ -1608,6 +1771,7 @@ const DICT = [
   ["SPAD", "Chlorophyll meter index. Weekly (Fridays) and 3 days after each dose."],
   ["LAI", "Leaf area index from the ceptometer. Fortnightly and 3 days after each dose."],
   ["… change", "Change from that plant's previous reading of the same measurement."],
+  ["Corrections sheet", "Every value altered or removed after it was first recorded, with the initials, date and reason given at the time. Blank sheet = nothing was ever amended."],
   ["Dosed today / Dose %", "Whether Microcystis was applied that day and at what strength."],
   ["Days since dose", "Days elapsed since that plant's most recent dose — the exposure clock."],
   ["Temp high / low / mean F", "Daily air temperature at the plot, °F."],
@@ -1642,6 +1806,18 @@ async function buildWorkbook(which) {
     add("Daily", COLS_DAY, dayRows(f));
     if (TRTS.length) add("Treatment means", COLS_TRT, trtRows(f));
     add("Doses", COLS_DOSE, doseRows(f));
+    add("Corrections", [
+      { k: "date", h: "Date of change", w: 14 }, { k: "initials", h: "Initials", w: 9 },
+      { k: "actor", h: "Logged as", w: 12 }, { k: "action", h: "Action", w: 9 },
+      { k: "row", h: "Record", w: 26 }, { k: "field", h: "Field", w: 13 },
+      { k: "old", h: "Was", w: 12 }, { k: "new", h: "Became", w: 12 },
+      { k: "reason", h: "Reason given", w: 44, t: 1 }, { k: "at", h: "Recorded at", w: 22 }
+    ], (S.amendments || []).slice().sort((a, b) => String(a.at).localeCompare(String(b.at))).map(a => ({
+      date: a.change_date || String(a.at).slice(0, 10), initials: a.initials || "", actor: a.actor || "",
+      action: a.action || "", row: a.row_key || "", field: (CFG.MEASURES[a.field] || {}).label || a.field || "",
+      old: a.old_value == null ? "" : a.old_value, new: a.new_value == null ? "(removed)" : a.new_value,
+      reason: a.reason || "", at: a.at || ""
+    })));
   }
   add("Weather", COLS_WX, weatherRows(which === "weather" ? ($("#wFrom").value || "") : f.from, which === "weather" ? ($("#wTo").value || "") : f.to));
   if (which !== "weather") {
@@ -2237,7 +2413,7 @@ async function boot() {
 function wireAll() {
   $$("#tabs button").forEach(b => b.onclick = () => showView(b.dataset.v));
   $("#pdBack").onclick = () => showView("plants");
-  wireLog(); wireDose(); wirePlants(); wireData(); wireWeather(); wireUpdate(); wireFiles(); wireSetup();
+  wireLog(); wireDose(); wireAmend(); wirePlants(); wireData(); wireWeather(); wireUpdate(); wireFiles(); wireSetup();
   window.addEventListener("online", () => { S.online = true; paintSync(); flushOutbox(); });
   window.addEventListener("offline", () => { S.online = false; paintSync(); });
   document.addEventListener("visibilitychange", () => { if (!document.hidden && S.cloud && !S.demo) flushOutbox(); });

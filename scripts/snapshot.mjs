@@ -33,6 +33,7 @@ const TABLES = {
   day_log:       "log_date",
   weather_daily: "wx_date",
   audit_log:     "at",
+  amendments:    "at",
   files:         "created_at"
 };
 
@@ -159,6 +160,7 @@ Last snapshot: **${m.generated_at}**
 | \`doses.csv\` | ${n.doses ?? 0} | One row per plant per Microcystis exposure: strength, volume, stock mL |
 | \`day_log.csv\` | ${n.day_log ?? 0} | One row per day: the time measurements were taken, plus the day note |
 | \`weather_daily.csv\` | ${n.weather_daily ?? 0} | Daily conditions at the plot from Open-Meteo, including DD60 heat units |
+| \`amendments.csv\` | ${n.amendments ?? 0} | Reason-for-change record: every value edited or removed after it was first saved, with initials and why |
 | \`audit_log.csv\` | ${n.audit_log ?? 0} | Every change ever made: who, what, when. Written by a database trigger, so it cannot be skipped from the app |
 | \`snapshot-latest.json\` | — | Everything above in one file. This is what a restore reads |
 | \`backups/\` | ${m.backups} | Dated snapshots. Daily for ${KEEP_DAILY_DAYS} days; the 1st of each month is kept permanently |

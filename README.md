@@ -28,6 +28,7 @@ Optional shared storage → **Supabase** (Postgres + file storage, free tier).
 | **Excel** | One workbook: growth readings, per-day summary, treatment means, dosing log, weather, plant list, and a data dictionary. Each growth row already carries that day's weather, so there is no VLOOKUP to do. |
 | **Status update** | One button, then pick a window — last 7 days, last 30 days, or the whole trial. Writes where every group stands now and how far it moved, ready to paste into an email. |
 | **Files** | Emma uploads her working analysis workbook; anyone with the link downloads the latest. Old versions are never overwritten. |
+| **Reason for change** | Altering or deleting an already-committed reading requires initials, a date and a reason. The original value is kept, and the correction lands on the plant's page, the Excel export and the permanent record. |
 | **Permanent record** | Twice a day a GitHub Action copies the whole database into `data/` as committed files — CSVs, a JSON snapshot, dated backups, her analysis files, and the audit log of who changed what. |
 | **Offline** | Everything typed in the greenhouse is held on the phone and syncs when signal comes back. |
 | **Practice mode** | Loads a full fake trial to click around in, and clears it without touching real data. |
@@ -125,6 +126,7 @@ into [`data/`](data):
 | `data/snapshot-latest.json` | The whole database in one file; this is what **Setup → Restore backup** reads |
 | `data/backups/YYYY-MM-DD.json` | Dated snapshots. Daily for 60 days; the 1st of each month is kept forever |
 | `data/analysis/` | Every analysis file Emma has uploaded, plus `index.csv` saying who uploaded what and when |
+| `data/amendments.csv` | Every corrected or deleted value, with initials, date and the stated reason |
 | `data/audit_log.csv` | Every change ever made: actor, action, table, row, and the fields that changed |
 | `data/manifest.json` | Counts and timing, which the app's Setup tab reads back to show whether backups are keeping up |
 
@@ -165,6 +167,7 @@ into a fresh project, or into a browser with no backend at all.
 | `day_log` | one row per day — the time she measured, plus a day note |
 | `weather_daily` | one row per day at the plot |
 | `files` | uploaded working documents |
+| `amendments` | one row per amended value — initials, date, reason, old and new value. The app will not change settled data without one |
 | `audit_log` | one row per change, written by a trigger — actor, action, table, row, changed fields |
 
 Leaves are a **total count on the plant that day**, not new leaves — a drop from 6 to 4

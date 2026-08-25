@@ -100,6 +100,34 @@ when you want to see whether a plant turned the corner after an exposure.
 
 ---
 
+## 4b. Fixing a number you already saved
+
+Type over it, or press **clear** on the card to remove a reading entirely.
+
+If that value had already been committed — you saved it on an earlier visit, or someone
+else recorded it — a box appears first:
+
+| | |
+|---|---|
+| **Your initials** | e.g. `ED`. Remembered after the first time |
+| **Date of change** | defaults to today |
+| **Reason** | tap a common one (transcription error, re-measured, wrong plant, wrong date, instrument error) or type your own |
+
+It shows you exactly what is about to change — `Height 28 → 99.9` — and nothing is saved
+until the box is filled in. **Cancel** puts the original value back.
+
+Correcting something you typed a minute ago does **not** ask. That is just finishing your
+entry. It only asks once a reading has settled, and once a reading has been formally
+corrected it will ask every time after that.
+
+Why it matters: it means every number in your dataset either came straight off the
+instrument, or has your initials and a reason next to it explaining why it differs. If a
+committee ever asks "why is this point different from the raw sheet", the answer is in
+the file. The original value is never deleted — you can see it on the plant's page, on
+the **Corrections** sheet of the Excel export, and in the permanent record.
+
+---
+
 ## 5. Getting it into Excel
 
 ![The data and export tab](img/03-data.png)
