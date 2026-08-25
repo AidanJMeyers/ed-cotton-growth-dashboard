@@ -9,8 +9,13 @@ name: Apply SQL to the database
 # database exists in this repo first, reviewable in the diff.
 #
 # One-time setup: add a repository secret named SUPABASE_DB_URL.
-#   Supabase -> Project Settings -> Database -> Connection string -> URI
-#   (use the Session pooler URI if the direct one cannot connect)
+#   Supabase -> "Connect" button at the top of the project dashboard
+#   -> use the SESSION POOLER string (port 5432), not "Direct connection":
+#      postgres://postgres.<ref>:<password>@aws-<region>.pooler.supabase.com:5432/postgres
+#   GitHub runners are IPv4 only; the direct connection is IPv6 only unless
+#   the project has the IPv4 add-on, so it cannot reach the database from CI.
+#   Transaction pooler (6543) does not support the prepared statements psql
+#   uses, so session mode is the one that works here.
 #   Then: repo Settings -> Secrets and variables -> Actions -> New secret.
 # The secret is never printed and never leaves GitHub.
 
@@ -77,5 +82,17 @@ jobs:
           echo "--- applying ---"
           # ON_ERROR_STOP so a failed statement fails the run instead of
           # leaving the schema half-applied and the job green.
-          psql "$PGURL" -v ON_ERROR_STOP=1 --single-transaction -f "${{ steps.pick.outputs.file }}"
+          if ! psql "$PGURL" -v ON_ERROR_STOP=1 --single-transaction -f "${{ steps.pick.outputs.file }}"; then
+            echo "::error::psql failed — nothing was applied (the whole file runs in one transaction)."
+            case "$PGURL" in
+              *db.*.supabase.co*)
+                echo "::error::That looks like the DIRECT connection string. It is IPv6 only, and GitHub runners are IPv4 only."
+                echo "Use the Session pooler string instead: Supabase > Connect > Session pooler (port 5432)." ;;
+              *:6543/*)
+                echo "::error::That is the TRANSACTION pooler (port 6543), which does not support the prepared statements psql uses."
+                echo "Use the Session pooler string instead (port 5432)." ;;
+              *) echo "Check that SUPABASE_DB_URL is the Session pooler URI with the password filled in." ;;
+            esac
+            exit 1
+          fi
           echo "Applied cleanly."

@@ -82,11 +82,20 @@ on her phone, her laptop, and any mentor's screen, and file uploads work.
 
 So schema changes stop being "paste this into the SQL editor".
 
-1. Supabase → **Project Settings → Database → Connection string → URI**. Copy it
-   (use the **Session pooler** URI if the direct one will not connect). It contains
-   your database password.
-2. Repo → **Settings → Secrets and variables → Actions → New repository secret**.
-   Name it `SUPABASE_DB_URL`, paste the URI, save.
+1. In Supabase, click **Connect** at the top of the project dashboard (or go straight to
+   <https://supabase.com/dashboard/project/_?showConnect=true>).
+2. Choose the **Session pooler** string. It looks like:
+   `postgres://postgres.<project-ref>:[PASSWORD]@aws-<region>.pooler.supabase.com:5432/postgres`
+   Replace `[PASSWORD]` with the database password you set when creating the project.
+   (If you have lost it: **Connect** → the same panel has a reset link.)
+3. Repo → **Settings → Secrets and variables → Actions → New repository secret**.
+   Name it `SUPABASE_DB_URL`, paste the string, save.
+
+> **Take the Session pooler one, not "Direct connection".** GitHub's runners are IPv4
+> only, and Supabase's direct connection is IPv6 only unless you buy the IPv4 add-on —
+> the direct string will simply fail to connect from Actions. Transaction pooler (port
+> 6543) does not support the prepared statements psql uses, so session mode (5432) is
+> the right one here.
 
 From then on, [`schema.sql`](schema.sql) is applied automatically whenever it changes on
 `main`, and any other file can be run from **Actions → Apply SQL to the database → Run
