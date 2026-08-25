@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: write      # to kick off the Pages deploy after committing
 
 concurrency:
   group: snapshot
@@ -38,14 +39,17 @@ jobs:
         run: node scripts/snapshot.mjs
 
       - name: Commit the snapshot
+        id: commit
         run: |
           git config user.name  "cotton-log bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data
           if git diff --staged --quiet; then
             echo "No change since the last snapshot."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
           git commit -m "data: snapshot $(date -u +%Y-%m-%d\ %H:%M) UTC" \
                      -m "${{ steps.snap.outputs.summary }}"
           # A logging session can land between our pull and our push, so rebase and retry.
@@ -55,3 +59,12 @@ jobs:
             sleep 5
           done
           exit 1
+
+      # A push made with GITHUB_TOKEN deliberately does not trigger other
+      # workflows, so Pages would keep serving a stale data/ folder. Dispatch
+      # the deploy explicitly (workflow_dispatch is exempt from that rule).
+      - name: Republish the site with the new data
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref "${GITHUB_REF_NAME}"

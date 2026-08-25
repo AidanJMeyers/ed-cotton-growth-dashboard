@@ -13,3 +13,6 @@ service_role*.txt
 
 # downloaded exports
 *.xlsx
+
+# ...but the mirrored analysis files in data/ ARE the permanent record.
+!data/analysis/**
