@@ -74,6 +74,6 @@ window.COTTON_CONFIG = {
   // NEVER paste the "service_role" key here.
   //
   // Leave both blank to run in on-this-device mode.
-  SUPABASE_URL: "",
-  SUPABASE_ANON_KEY: ""
+  SUPABASE_URL: "https://ctynvonlnfvhbblmafnp.supabase.co/rest/v1/",
+  SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0eW52b25sbmZ2aGJibG1hZm5wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc2ODE3ODEsImV4cCI6MjEwMzI1Nzc4MX0.iVpZIgSs4Ieenm-5lsAZlg1-3iSryWARVDAHzceOSHc"
 };
