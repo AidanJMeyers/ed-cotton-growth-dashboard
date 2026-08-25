@@ -1,4 +1,0 @@
-id,at,change_date,initials,actor,action,tbl,row_key,field,old_value,new_value,reason
-1,2026-08-25T20:22:03.522829+00:00,2026-08-25,NA,setup check,edit,measurements,connection test,n/a,n/a,n/a,Setup verification.
-2,2026-08-25T20:22:04.677485+00:00,,NA,,edit,measurements,,,,,probe
-3,2026-08-25T20:22:17.743234+00:00,2026-08-25,NA,setup check,edit,measurements,connection test,n/a,n/a,n/a,Setup verification.
