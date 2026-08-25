@@ -78,6 +78,28 @@ on her phone, her laptop, and any mentor's screen, and file uploads work.
 > can't wipe the season. The only removals are `clear_measurement`, `delete_dose` and
 > `delete_file`, each scoped to a single row. Retiring a plant is a flag, never a delete.
 
+### 2b. Let the repo apply SQL for you (optional, recommended)
+
+So schema changes stop being "paste this into the SQL editor".
+
+1. Supabase → **Project Settings → Database → Connection string → URI**. Copy it
+   (use the **Session pooler** URI if the direct one will not connect). It contains
+   your database password.
+2. Repo → **Settings → Secrets and variables → Actions → New repository secret**.
+   Name it `SUPABASE_DB_URL`, paste the URI, save.
+
+From then on, [`schema.sql`](schema.sql) is applied automatically whenever it changes on
+`main`, and any other file can be run from **Actions → Apply SQL to the database → Run
+workflow** by naming it (e.g. `sql/2026-08-25-remove-setup-test-amendments.sql`).
+
+Why bother: every statement ever run against the database exists in this repo first, so
+it shows up in a diff and in the commit history rather than in someone's browser tab. It
+runs in a single transaction with `ON_ERROR_STOP`, so a bad statement rolls back instead
+of leaving the schema half-applied.
+
+The secret stays in GitHub. It is never printed in logs and is not in the repo — do not
+paste that connection string into a file, an issue, or a chat window.
+
 ### 3. Publish it
 
 Push to GitHub and enable **Settings → Pages → Source: GitHub Actions**.
@@ -154,6 +176,8 @@ into a fresh project, or into a browser with no backend at all.
 | `docs/WALKTHROUGH.md` | The illustrated guide for Emma. |
 | `.github/workflows/deploy.yml` | Publishes to GitHub Pages on push. |
 | `.github/workflows/snapshot.yml` | Commits the data snapshot twice a day. |
+| `.github/workflows/apply-sql.yml` | Applies `schema.sql` (and any file in `sql/`) to the database. |
+| `sql/` | One-off scripts, kept so there is a record of every change made to the data. |
 
 ---
 

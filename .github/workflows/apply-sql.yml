@@ -1,0 +1,81 @@
+name: Apply SQL to the database
+
+# Runs a .sql file from this repo against the Supabase database, so schema
+# changes and one-off fixes stop being "paste this into the SQL editor".
+#
+# schema.sql is idempotent, so re-running it is always safe — it is applied
+# automatically whenever it changes on main. Anything else is run on demand
+# from the Actions tab, which means every statement ever run against the
+# database exists in this repo first, reviewable in the diff.
+#
+# One-time setup: add a repository secret named SUPABASE_DB_URL.
+#   Supabase -> Project Settings -> Database -> Connection string -> URI
+#   (use the Session pooler URI if the direct one cannot connect)
+#   Then: repo Settings -> Secrets and variables -> Actions -> New secret.
+# The secret is never printed and never leaves GitHub.
+
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: "SQL file to run, relative to the repo root"
+        required: true
+        default: "schema.sql"
+  push:
+    branches: [main]
+    paths: ["schema.sql"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: apply-sql
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check the connection secret is set
+        env:
+          PGURL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          if [ -z "$PGURL" ]; then
+            echo "::error::SUPABASE_DB_URL is not set. Add it under Settings > Secrets and variables > Actions."
+            echo "Supabase > Project Settings > Database > Connection string > URI"
+            exit 1
+          fi
+          echo "Secret is present."
+
+      - name: Pick the file
+        id: pick
+        run: |
+          FILE="${{ github.event.inputs.file }}"
+          [ -z "$FILE" ] && FILE="schema.sql"
+          # stay inside the repo and only ever run .sql
+          case "$FILE" in
+            /*|*..*) echo "::error::Refusing path outside the repo: $FILE"; exit 1 ;;
+            *.sql)   ;;
+            *)       echo "::error::Not a .sql file: $FILE"; exit 1 ;;
+          esac
+          if [ ! -f "$FILE" ]; then
+            echo "::error::No such file in the repo: $FILE"
+            exit 1
+          fi
+          echo "file=$FILE" >> "$GITHUB_OUTPUT"
+          echo "Will run: $FILE"
+
+      - name: Run it
+        env:
+          PGURL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          echo "--- ${{ steps.pick.outputs.file }} ---"
+          cat "${{ steps.pick.outputs.file }}"
+          echo "--- applying ---"
+          # ON_ERROR_STOP so a failed statement fails the run instead of
+          # leaving the schema half-applied and the job green.
+          psql "$PGURL" -v ON_ERROR_STOP=1 --single-transaction -f "${{ steps.pick.outputs.file }}"
+          echo "Applied cleanly."
