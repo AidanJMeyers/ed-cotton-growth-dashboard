@@ -1,0 +1,24 @@
+{
+  "app": "cotton-field-log",
+  "generated_at": "2026-08-25T19:53:56.713Z",
+  "counts": {
+    "plants": 0,
+    "measurements": 0,
+    "doses": 0,
+    "day_log": 0,
+    "weather_daily": 0,
+    "audit_log": 4,
+    "files": 0
+  },
+  "backups": 1,
+  "pruned": 0,
+  "analysis": {
+    "total": 0,
+    "latest": null
+  },
+  "active_last_7_days": {
+    "setup check": 4
+  },
+  "last_measurement": "",
+  "last_dose": ""
+}

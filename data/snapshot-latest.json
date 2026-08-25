@@ -1,0 +1,102 @@
+{
+  "app": "cotton-field-log",
+  "version": 2,
+  "generated_at": "2026-08-25T19:53:56.713Z",
+  "counts": {
+    "plants": 0,
+    "measurements": 0,
+    "doses": 0,
+    "day_log": 0,
+    "weather_daily": 0,
+    "audit_log": 4,
+    "files": 0
+  },
+  "plants": [],
+  "measurements": [],
+  "doses": [],
+  "day_log": [],
+  "weather_daily": [],
+  "audit_log": [
+    {
+      "id": 1,
+      "at": "2026-08-25T19:52:45.221577+00:00",
+      "actor": "setup check",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "1900-01-01 / plant 999",
+      "changes": {
+        "lai": null,
+        "note": "connection test",
+        "spad": null,
+        "leaves": null,
+        "obs_date": "1900-01-01",
+        "plant_id": 999,
+        "height_cm": 1,
+        "updated_at": "2026-08-25T19:52:45.221577+00:00",
+        "recorded_by": "setup check",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 2,
+      "at": "2026-08-25T19:52:46.100838+00:00",
+      "actor": "setup check",
+      "action": "delete",
+      "tbl": "measurements",
+      "row_key": "1900-01-01 / plant 999",
+      "changes": {
+        "lai": null,
+        "note": "connection test",
+        "spad": null,
+        "leaves": null,
+        "obs_date": "1900-01-01",
+        "plant_id": 999,
+        "height_cm": 1,
+        "updated_at": "2026-08-25T19:52:45.221577+00:00",
+        "recorded_by": "setup check",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 3,
+      "at": "2026-08-25T19:53:06.459155+00:00",
+      "actor": "setup check",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "1900-01-01 / plant 999",
+      "changes": {
+        "lai": null,
+        "note": "delete-protection test",
+        "spad": null,
+        "leaves": null,
+        "obs_date": "1900-01-01",
+        "plant_id": 999,
+        "height_cm": 1,
+        "updated_at": "2026-08-25T19:53:06.459155+00:00",
+        "recorded_by": "setup check",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 4,
+      "at": "2026-08-25T19:53:07.880825+00:00",
+      "actor": "setup check",
+      "action": "delete",
+      "tbl": "measurements",
+      "row_key": "1900-01-01 / plant 999",
+      "changes": {
+        "lai": null,
+        "note": "delete-protection test",
+        "spad": null,
+        "leaves": null,
+        "obs_date": "1900-01-01",
+        "plant_id": 999,
+        "height_cm": 1,
+        "updated_at": "2026-08-25T19:53:06.459155+00:00",
+        "recorded_by": "setup check",
+        "internode_cm": null
+      }
+    }
+  ],
+  "files": []
+}
