@@ -181,8 +181,11 @@ app's **Data & export → Download Excel** instead — these files are the raw t
 async function main() {
   const { url, key } = credentials();
   if (!url || !key) {
-    console.error("No Supabase credentials. Set SUPABASE_URL and SUPABASE_ANON_KEY, or fill them into config.js.");
-    process.exit(78);                                                // EX_CONFIG: nothing to do, not a failure
+    // Not an error: the app runs fine without Supabase, there is just nothing
+    // to snapshot yet. Exit clean so the scheduled run isn't a red X every day.
+    console.log("No Supabase credentials found in config.js or the environment.");
+    console.log("Nothing to snapshot — fill SUPABASE_URL and SUPABASE_ANON_KEY into config.js to switch this on.");
+    return;
   }
   console.log(`Snapshotting ${url}`);
   mkdirSync(DATA, { recursive: true });
