@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Cotton Field Log — the complete guide</title>
+<style>
+  @page { size: Letter; margin: 16mm 15mm 18mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: #16211a; font-size: 10.5pt; line-height: 1.55; margin: 0;
+  }
+  h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 600; color: #1f4d2e; }
+  h2 { font-size: 17pt; margin: 0 0 4mm; padding-bottom: 2mm; border-bottom: 2px solid #2e6b3e; break-after: avoid; }
+  h2:not(.first) { break-before: page; }
+  h3 { font-size: 12.5pt; margin: 6mm 0 2mm; break-after: avoid; }
+  p { margin: 0 0 3mm; }
+  a { color: #1f4d2e; text-decoration: none; }
+  strong { color: #16211a; }
+  code { background: #f0f3ef; border: 1px solid #dde3dd; border-radius: 3px; padding: 0.5mm 1.2mm; font-size: 9pt; font-family: Consolas, monospace; }
+  pre { background: #f6f8f5; border: 1px solid #dde3dd; border-left: 3px solid #2e6b3e; border-radius: 4px;
+        padding: 3mm 4mm; font-size: 9pt; line-height: 1.5; overflow: hidden; break-inside: avoid; margin: 0 0 4mm; }
+  pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+  ul, ol { margin: 0 0 4mm; padding-left: 6mm; }
+  li { margin-bottom: 1.5mm; }
+  table { border-collapse: collapse; width: 100%; margin: 0 0 4mm; font-size: 9.5pt; break-inside: avoid; }
+  th { background: #1f4d2e; color: #fff; text-align: left; padding: 2mm 2.5mm; font-size: 8.5pt;
+       text-transform: uppercase; letter-spacing: .04em; }
+  td { border-bottom: 1px solid #e4e9e3; padding: 2mm 2.5mm; vertical-align: top; }
+  tr:nth-child(even) td { background: #f7f9f6; }
+  figure { margin: 0 0 5mm; break-inside: avoid; }
+  figure img { width: 100%; border: 1px solid #dde3dd; border-radius: 4px; display: block; }
+  hr { display: none; }
+
+  .cover { height: 232mm; display: flex; flex-direction: column; justify-content: center; break-after: page; }
+  .cover .eyebrow { font-size: 9pt; letter-spacing: .22em; text-transform: uppercase; color: #2e6b3e; margin-bottom: 6mm; }
+  .cover h1 { font-size: 34pt; line-height: 1.1; margin: 0 0 6mm; }
+  .cover .rule { width: 30mm; height: 3px; background: #b4622f; margin-bottom: 7mm; }
+  .cover p { font-size: 11pt; max-width: 125mm; color: #3c4a41; }
+  .cover .foot { margin-top: 10mm; font-size: 9.5pt; color: #5d6b62; }
+  .cover .foot b { color: #16211a; }
+  .toc { break-after: page; }
+  .toc h2 { border: 0; }
+  .toc ol { padding-left: 5mm; font-size: 11pt; }
+  .toc li { margin-bottom: 2mm; }
+</style></head><body>
+
+<section class="cover">
+  <div class="eyebrow">TAMU-CC · Melaram Lab</div>
+  <h1>Cotton Field Log — the complete guide</h1>
+  <div class="rule"></div>
+  <p>Hi Emma. This replaces the spreadsheet, the R scripts and the macro button. There is nothing to install and nothing to code. You open a link, type numbers, and the Excel file is one click away whenever you or a mentor wants it.</p>
+<p><strong>Everything below is shown with the built-in sample trial.</strong> Load it yourself — <strong>Setup → Load sample data</strong> — and click around freely. Clearing it puts your real data back exactly as it was, so there is nothing you can break by exploring.</p>
+  <div class="foot">
+    Cotton × <i>Microcystis</i> trial · Emma Doria<br>
+    Live app: <b>aidanjmeyers.github.io/ed-cotton-growth-dashboard</b><br>
+    Generated August 25, 2026
+  </div>
+</section>
+
+<h2 class="first" id="the-60-second-version">The 60-second version</h2>
+<ol><li>Open the link. Check <strong>Logging as</strong> (top right) says your name.</li><li>Type each plant's numbers on the <strong>Log a day</strong> tab. It saves itself.</li><li>On dosing days, press <strong>Record a dose</strong>.</li><li>When someone wants the data: <strong>Data &amp; export → Download Excel</strong>.</li><li>When someone wants an update: <strong>Status update → Copy to clipboard</strong>.</li></ol>
+<p>Everything else in this guide is detail you can come back to.</p>
+<hr>
+<h2 id="1-reading-the-top-bar">1. Reading the top bar</h2>
+<figure><img src="img/01-log.png" alt="The daily logging screen"></figure>
+<table><tbody><tr><td><strong>Day 20 · Tue, Aug 25</strong></td><td>How many days into the trial today is</td></tr><tr><td><strong>Saved &amp; synced</strong></td><td>Everything you typed has reached the database. See <a href="#12-if-something-looks-wrong">section 12</a> for the other things this can say</td></tr><tr><td><strong>Logging as</strong></td><td>Your name goes onto every reading you record. Check it before you start</td></tr></tbody></table>
+<p>The tabs across the top are the eight places anything happens. They are covered in order below.</p>
+<hr>
+<h2 id="2-first-time-only-add-your-plants">2. First time only — add your plants</h2>
+<p>Go to <strong>Plants</strong>.</p>
+<figure><img src="img/06-plants.png" alt="The Plants tab"></figure>
+<p><strong>Add one plant</strong> with the label you wrote on the pot, its treatment group, when it was sown, how deep, and how many seeds.</p>
+<p><strong>Add a full set</strong> is faster when they all start together: fill in the shared details, type a prefix in <strong>Label</strong>, press <strong>Add a full set…</strong>, and say how many. It creates numbered plants split evenly across Control, Low 2% and High 5%.</p>
+<p>Each plant tile then shows its age, container, sowing depth, how many doses it has had, its total readings, and its last reading.</p>
+<ul><li><strong>Edit</strong> — rename, change treatment, change notes</li><li><strong>Retire</strong> — for a plant that dies or leaves the trial. Its history is kept in full, it just stops appearing on the daily list. You can un-retire it</li></ul>
+<p>Adding a plant mid-trial is fine. So is retiring one.</p>
+<hr>
+<h2 id="3-the-daily-routine">3. The daily routine</h2>
+<p>Everything on the <strong>Log a day</strong> tab, top to bottom.</p>
+<h3 id="the-date-row">The date row</h3>
+<p>The date is already today. The arrows step one day at a time, <strong>Today</strong> jumps back. Backfilling an earlier day is completely normal — just pick the date.</p>
+<p><strong>Time measured</strong> is when you took the readings, not when you typed them.</p>
+<p><strong>12/12 plants logged</strong> tracks the day's progress.</p>
+<h3 id="due-today">Due today</h3>
+<p>The green band says what the schedule expects:</p>
+<table><thead><tr><th>Measurement</th><th>When</th></tr></thead><tbody><tr><td>Height, leaves, internode</td><td>Every day</td></tr><tr><td>SPAD</td><td>Weekly, Fridays</td></tr><tr><td>Ceptometer (LAI)</td><td>Every other Friday</td></tr><tr><td>SPAD and LAI again</td><td>3 days after any dose</td></tr></tbody></table>
+<p>You never have to work the post-dose timing out yourself — the band says <code>DAY 3 AFTER DOSE</code> in orange when it applies. Boxes that are due are outlined in green.</p>
+<h3 id="days-with-nothing-recorded">Days with nothing recorded</h3>
+<p>Orange chips list days you missed. Tap one to jump straight there and fill it in.</p>
+<h3 id="the-weather-strip">The weather strip</h3>
+<p>Filled in for you from the plot's coordinates — you never fetch this.</p>
+<p><strong>DD60</strong> is the heat units for that day; <strong>DD60 SEASON</strong> is the running total since the trial started. Cotton development tracks heat units better than calendar days, which is why it is there.</p>
+<h3 id="the-plant-cards">The plant cards</h3>
+<p>The grey line on each card is what that plant looked like last time, so you always know what you are comparing against.</p>
+<p>Type the numbers. <strong>There is no save button</strong> — about a second after you stop typing the card turns green and says ✓ saved.</p>
+<p>Under each box is a small arrow comparing what you just typed against that plant's last reading of the same thing: green up, red down. A red arrow is not an error. It is the plant telling you something.</p>
+<p>Three time-savers:</p>
+<ul><li><strong>Enter</strong> jumps to the same box on the next plant, so you can go down the bench without touching the mouse</li><li><strong>+ also record</strong> reveals measurements that are not due today, if you took them anyway</li><li><strong>history ›</strong> opens that plant's full record</li></ul>
+<h3 id="two-rules-that-matter-for-the-analysis">Two rules that matter for the analysis</h3>
+<p><strong>Blank is not zero.</strong> An empty box means you did not measure it. A zero means you measured and it was zero. Statistics treat those completely differently, so please leave things blank rather than typing 0.</p>
+<p><strong>Leaves is a total count</strong> — how many are on the plant right now, not how many are new. If it drops from 6 to 4 because two fell off, put 4. That fall is exactly the signal this trial is looking for.</p>
+<h3 id="the-day-note">The day note</h3>
+<p>At the bottom: one note for the whole day. Watering, dosing, weather you saw, anything odd. This is where "the AC in the greenhouse failed overnight" belongs.</p>
+<hr>
+<h2 id="4-dosing-days">4. Dosing days</h2>
+<p>Press <strong>Record a dose</strong> in the orange strip.</p>
+<figure><img src="img/08-dose.png" alt="Recording a dose"></figure>
+<p>Pick the date, then the plants — <strong>clicking a group name selects that whole group</strong>. Controls are left out by default.</p>
+<p>Leave <strong>Strength</strong> blank and each plant is dosed at its own group's concentration. The panel spells out the actual mixture so you can make it up correctly:</p>
+<pre><code>2% = 2 mL stock + 98 mL water
+5% = 5 mL stock + 95 mL water</code></pre>
+<p>Type a number in <strong>Strength</strong> only if you want to override every selected plant at once.</p>
+<p>One record is written per plant, so each plant carries its own exposure history. From then on the app knows when the 3-day post-dose readings are due, every chart marks the dose day with a dashed line, and the strip tells you when the next fortnightly dose falls.</p>
+<hr>
+<h2 id="5-correcting-something-already-saved">5. Correcting something already saved</h2>
+<p>Type over a value, or press <strong>clear</strong> to remove a reading entirely.</p>
+<p>If that value had already been committed — you saved it on an earlier visit, or someone else recorded it — this appears first:</p>
+<figure><img src="img/09-correction.png" alt="The correction dialog"></figure>
+<table><tbody><tr><td><strong>Your initials</strong></td><td>Remembered after the first time</td></tr><tr><td><strong>Date of change</strong></td><td>Defaults to today</td></tr><tr><td><strong>Reason</strong></td><td>Tap a common one, or type your own</td></tr></tbody></table>
+<p>It shows exactly what is about to change, and <strong>nothing is saved until it is filled in</strong>. <strong>Cancel, keep the original</strong> puts the value back.</p>
+<p>Correcting something you typed a minute ago does <em>not</em> ask — that is just finishing your entry. It only asks once a reading has settled, and once a reading has been formally corrected it asks every time after that.</p>
+<p>Why it matters: every number in your dataset either came straight off the instrument, or has your initials and a reason next to it explaining why it differs. If a committee asks "why is this point different from your raw sheet", the answer is in the file. The original value is never deleted.</p>
+<p>Corrections appear on the plant's own page, on the <strong>Corrections</strong> sheet of the Excel export, and in the permanent record.</p>
+<hr>
+<h2 id="6-one-plant-at-a-time">6. One plant at a time</h2>
+<p>Click any plant's name, anywhere.</p>
+<figure><img src="img/02-plant.png" alt="One plant's full history"></figure>
+<p>You get its sowing details, its latest value for everything with the change since the reading before, a growth curve per measurement with dose days marked, every reading it has ever had with up/down arrows, and — if there are any — its corrections.</p>
+<p>This is the screen to open when someone asks "how is the high-dose group doing", or when you want to see whether a plant turned the corner after an exposure.</p>
+<hr>
+<h2 id="7-weather">7. Weather</h2>
+<figure><img src="img/04-weather.png" alt="The weather tab"></figure>
+<p>Conditions at the plot for the whole trial: temperature, rainfall, humidity and cloud, and cumulative heat units. Filter by date, and export just the weather to Excel or CSV.</p>
+<p>You never have to fetch this — it updates itself. <strong>Refresh weather</strong> only forces it. New days appear about a day late, which is normal for reanalysis data.</p>
+<hr>
+<h2 id="8-data-export">8. Data &amp; export</h2>
+<figure><img src="img/03-data.png" alt="The data and export tab"></figure>
+<p>The <strong>Rows</strong> dropdown switches what you are looking at:</p>
+<table><thead><tr><th>View</th><th>One row per</th></tr></thead><tbody><tr><td><strong>Plant per day</strong></td><td>Every individual reading — the raw data</td></tr><tr><td><strong>Day</strong></td><td>Whole-trial summary per day: means, standard deviations, counts</td></tr><tr><td><strong>Treatment per day</strong></td><td>Each group's mean and sd per day — the view to run stats from</td></tr><tr><td><strong>Dosing log</strong></td><td>Every exposure</td></tr></tbody></table>
+<p>Narrow it by date range, single plant, or treatment group. <strong>CSV of this view</strong> downloads exactly what is on screen.</p>
+<p><strong>Download Excel</strong> gives you one workbook with everything:</p>
+<table><thead><tr><th>Sheet</th><th>What's on it</th></tr></thead><tbody><tr><td><strong>Growth</strong></td><td>One row per plant per day, with change columns and that day's weather attached</td></tr><tr><td><strong>Daily</strong></td><td>Whole-trial summary per day</td></tr><tr><td><strong>Treatment means</strong></td><td>Per group per day — mean, sd, n</td></tr><tr><td><strong>Doses</strong></td><td>Every exposure: which plant, what strength, how much</td></tr><tr><td><strong>Corrections</strong></td><td>Every value changed after it was recorded, with initials and reason</td></tr><tr><td><strong>Weather</strong></td><td>Daily conditions and heat units</td></tr><tr><td><strong>Plants</strong></td><td>Your plant list with treatments and sowing details</td></tr><tr><td><strong>Data dictionary</strong></td><td>What every column means, in plain English</td></tr></tbody></table>
+<p>Because the weather is already on every growth row, there is no lining-up by hand and no VLOOKUP to write.</p>
+<hr>
+<h2 id="9-status-update">9. Status update</h2>
+<figure><img src="img/05-update.png" alt="The status update generator"></figure>
+<p>Pick a window — <strong>last 7 days</strong>, <strong>last 30 days</strong>, <strong>whole trial</strong>, or custom — and the summary rewrites instantly:</p>
+<pre><code>  High 5% — 4 plants
+      Height:    21.8 cm     +3.6 (+20%)
+      Leaves:    6.5         +0.8
+      SPAD:      39.7        +1.3 (+3%)      last read Aug 21</code></pre>
+<p>Then coverage, dosing, the weather, anything heading the wrong way, and your field notes. <strong>Copy to clipboard</strong> and paste it into an email.</p>
+<p>A measurement that is not taken daily still shows its current value with the date it was last read, so a 7-day report is not full of blanks. And a 30-day window on a 20-day trial says so rather than pretending.</p>
+<p><strong>Report by</strong> switches between treatment groups and every plant individually.</p>
+<hr>
+<h2 id="10-files-your-working-analysis">10. Files — your working analysis</h2>
+<p>Drop your analysis workbook here whenever you update it. Anyone with the link can then see the live data <em>and</em> download your latest analysis, without you emailing anything. Protocols and photos are welcome too.</p>
+<p>Label each upload (working file / protocol / photo / other) and add a note like "week 3, updated ANOVA".</p>
+<p><strong>Nothing is ever overwritten.</strong> Every upload is kept and tagged with your name and date, and the newest working file is marked <code>latest</code> so nobody grabs a stale one. All of them are copied into the permanent record twice a day.</p>
+<hr>
+<h2 id="11-setup">11. Setup</h2>
+<figure><img src="img/07-setup.png" alt="The setup tab"></figure>
+<p>Four panels. You will rarely need any of them, but here is what they do.</p>
+<p><strong>Study</strong> — the trial start date, the plot coordinates, and buttons to refresh the weather or import a weather file from the old R pipeline.</p>
+<p><strong>Measurement schedule</strong> — what the app expects and when. Changing it is a config edit, so ask Aidan.</p>
+<p><strong>Where the data lives</strong> — how many plants, readings and doses exist, and how many changes are waiting to sync. Also:</p>
+<ul><li><strong>Sync now</strong> — push anything waiting, when you have signal</li><li><strong>Download backup</strong> — saves the entire season to one file you can email</li><li><strong>Restore backup</strong> — loads one back in</li></ul>
+<p><strong>Permanent record</strong> — when your data was last written to permanent files, how many changes have been logged, how many backups are kept, and who has been active this week. If that line turns red, the automatic backup has stopped — tell Aidan. It does not mean anything is lost.</p>
+<p><strong>Practice mode</strong> — loads a full sample trial to click around in. Clearing it restores your real data untouched.</p>
+<hr>
+<h2 id="12-if-something-looks-wrong">12. If something looks wrong</h2>
+<p><strong>The pill at the top right</strong> tells you the state of your data:</p>
+<table><thead><tr><th>It says</th><th>Meaning</th></tr></thead><tbody><tr><td><strong>Saved &amp; synced</strong></td><td>Everything has reached the database. Normal</td></tr><tr><td><strong>Offline — saved here</strong></td><td>No signal. Your typing is safe on this device and will sync automatically</td></tr><tr><td><strong>N waiting</strong></td><td>That many changes still to send. Open the app on wifi, or press <strong>Sync now</strong></td></tr><tr><td><strong>On this device</strong></td><td>Not connected to the shared database at all — tell Aidan</td></tr><tr><td><strong>Sample data</strong></td><td>You are in practice mode. Nothing you type is real</td></tr></tbody></table>
+<p><strong>It works without signal.</strong> Anything typed in the greenhouse is held on the phone and syncs the moment you have bars again. Just do not clear your browser data while something is waiting.</p>
+<p><strong>Nothing is deleted by accident.</strong> The only removal is the <code>clear</code> link on a single card, and it asks for a reason first.</p>
+<p><strong>If a number looks wrong</strong>, there is a record of what it was before and who changed it.</p>
+<p><strong>If you are stuck</strong>, press <strong>Setup → Download backup</strong>, email that file to Aidan, and say what looked wrong. You cannot break this by clicking around.</p>
+<hr>
+<h2 id="13-where-your-data-actually-lives">13. Where your data actually lives</h2>
+<p>You do not have to do anything for this, but it is worth knowing.</p>
+<p>Everything you type goes into a shared database immediately, which is why it appears on every device. Twice a day, all of it is also written into permanent files on GitHub: spreadsheets of every reading, dated backups, your uploaded analysis files, and a log of every change with who made it and when.</p>
+<p>Practically: you cannot lose this data by dropping your phone.</p>
+<hr>
+<h2 id="the-one-habit-that-matters">The one habit that matters</h2>
+<p>Log every day you visit, even if it is a short visit and even if half the boxes are blank. Consistency is what makes the trends real. The orange "nothing recorded" chips exist to make catching up easy, not to nag you.</p>
+
+</body></html>

@@ -12,7 +12,12 @@ had four things to install and five ways to break before a single number got rec
 Static site (vanilla JS, no build step) → **GitHub Pages**.
 Optional shared storage → **Supabase** (Postgres + file storage, free tier).
 
-📖 **[Emma's illustrated walkthrough →](docs/WALKTHROUGH.md)**
+📖 **[Emma's illustrated walkthrough →](docs/WALKTHROUGH.md)**  
+📄 **[The same guide as a printable PDF →](docs/Cotton-Field-Log-Guide.pdf)**
+
+> The PDF is generated from the walkthrough by `node scripts/make-guide.mjs`, which writes
+> `docs/guide.html`; printing that to PDF from a browser regenerates it. The markdown is the
+> single source of truth, so the two cannot drift.
 
 ---
 
