@@ -1,21 +1,51 @@
 {
   "app": "cotton-field-log",
   "version": 2,
-  "generated_at": "2026-08-25T19:56:22.884Z",
+  "generated_at": "2026-08-25T20:23:11.025Z",
   "counts": {
     "plants": 0,
     "measurements": 0,
     "doses": 0,
     "day_log": 0,
-    "weather_daily": 0,
+    "weather_daily": 2,
     "audit_log": 4,
+    "amendments": 3,
     "files": 0
   },
   "plants": [],
   "measurements": [],
   "doses": [],
   "day_log": [],
-  "weather_daily": [],
+  "weather_daily": [
+    {
+      "wx_date": "2026-08-24",
+      "temp_max_f": 95.2,
+      "temp_min_f": 77.9,
+      "temp_mean_f": 85.7,
+      "rain_in": 0,
+      "humidity_pct": 75,
+      "cloud_pct": 16,
+      "wind_max_mph": 13.8,
+      "et0_in": 0.248,
+      "solar_mj": 26.6,
+      "source": "open-meteo",
+      "updated_at": "2026-08-25T20:20:13.654+00:00"
+    },
+    {
+      "wx_date": "2026-08-25",
+      "temp_max_f": 93.5,
+      "temp_min_f": 78.2,
+      "temp_mean_f": 85.4,
+      "rain_in": 0,
+      "humidity_pct": 75,
+      "cloud_pct": 10,
+      "wind_max_mph": 13.8,
+      "et0_in": 0.241,
+      "solar_mj": 26.1,
+      "source": "open-meteo",
+      "updated_at": "2026-08-25T20:20:13.654+00:00"
+    }
+  ],
   "audit_log": [
     {
       "id": 1,
@@ -96,6 +126,50 @@
         "recorded_by": "setup check",
         "internode_cm": null
       }
+    }
+  ],
+  "amendments": [
+    {
+      "id": 1,
+      "at": "2026-08-25T20:22:03.522829+00:00",
+      "change_date": "2026-08-25",
+      "initials": "NA",
+      "actor": "setup check",
+      "action": "edit",
+      "tbl": "measurements",
+      "row_key": "connection test",
+      "field": "n/a",
+      "old_value": "n/a",
+      "new_value": "n/a",
+      "reason": "Setup verification."
+    },
+    {
+      "id": 2,
+      "at": "2026-08-25T20:22:04.677485+00:00",
+      "change_date": null,
+      "initials": "NA",
+      "actor": null,
+      "action": "edit",
+      "tbl": "measurements",
+      "row_key": null,
+      "field": null,
+      "old_value": null,
+      "new_value": null,
+      "reason": "probe"
+    },
+    {
+      "id": 3,
+      "at": "2026-08-25T20:22:17.743234+00:00",
+      "change_date": "2026-08-25",
+      "initials": "NA",
+      "actor": "setup check",
+      "action": "edit",
+      "tbl": "measurements",
+      "row_key": "connection test",
+      "field": "n/a",
+      "old_value": "n/a",
+      "new_value": "n/a",
+      "reason": "Setup verification."
     }
   ],
   "files": []
