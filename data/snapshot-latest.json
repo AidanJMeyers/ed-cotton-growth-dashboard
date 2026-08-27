@@ -1,7 +1,7 @@
 {
   "app": "cotton-field-log",
   "version": 2,
-  "generated_at": "2026-08-27T00:28:55.297Z",
+  "generated_at": "2026-08-27T14:56:12.197Z",
   "counts": {
     "plants": 0,
     "measurements": 0,
@@ -29,7 +29,7 @@
       "et0_in": 0.248,
       "solar_mj": 26.6,
       "source": "open-meteo",
-      "updated_at": "2026-08-26T18:16:02.535+00:00"
+      "updated_at": "2026-08-27T00:34:00.349+00:00"
     },
     {
       "wx_date": "2026-08-25",
@@ -43,21 +43,21 @@
       "et0_in": 0.232,
       "solar_mj": 26,
       "source": "open-meteo",
-      "updated_at": "2026-08-26T18:16:02.535+00:00"
+      "updated_at": "2026-08-27T00:34:00.349+00:00"
     },
     {
       "wx_date": "2026-08-26",
-      "temp_max_f": 94,
+      "temp_max_f": 95.2,
       "temp_min_f": 78.6,
-      "temp_mean_f": 85.8,
+      "temp_mean_f": 86.2,
       "rain_in": 0,
       "humidity_pct": 77,
-      "cloud_pct": 17,
-      "wind_max_mph": 12.4,
-      "et0_in": 0.233,
-      "solar_mj": 25.4,
+      "cloud_pct": 16,
+      "wind_max_mph": 12.2,
+      "et0_in": 0.235,
+      "solar_mj": 25.5,
       "source": "open-meteo",
-      "updated_at": "2026-08-26T18:16:02.535+00:00"
+      "updated_at": "2026-08-27T00:34:00.349+00:00"
     }
   ],
   "audit_log": [
