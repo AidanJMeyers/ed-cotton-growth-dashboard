@@ -7,7 +7,7 @@ here will be overwritten on the next run — record data in the app instead.
 This folder is the permanent record. The app is where the work happens; git is where
 it survives.
 
-Last snapshot: **2026-08-28T15:18:53.699Z**
+Last snapshot: **2026-08-28T23:21:08.268Z**
 
 | File | Rows | What it is |
 |---|---|---|
@@ -15,7 +15,7 @@ Last snapshot: **2026-08-28T15:18:53.699Z**
 | `measurements.csv` | 0 | One row per plant per day. Blank means not measured, which is not the same as zero |
 | `doses.csv` | 0 | One row per plant per Microcystis exposure: strength, volume, stock mL |
 | `day_log.csv` | 0 | One row per day: the time measurements were taken, plus the day note |
-| `weather_daily.csv` | 4 | Daily conditions at the plot from Open-Meteo, including DD60 heat units |
+| `weather_daily.csv` | 5 | Daily conditions at the plot from Open-Meteo, including DD60 heat units |
 | `amendments.csv` | 0 | Reason-for-change record: every value edited or removed after it was first saved, with initials and why |
 | `audit_log.csv` | 4 | Every change ever made: who, what, when. Written by a database trigger, so it cannot be skipped from the app |
 | `snapshot-latest.json` | — | Everything above in one file. This is what a restore reads |

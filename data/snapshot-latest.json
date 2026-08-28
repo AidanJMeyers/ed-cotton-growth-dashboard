@@ -1,13 +1,13 @@
 {
   "app": "cotton-field-log",
   "version": 2,
-  "generated_at": "2026-08-28T15:18:53.699Z",
+  "generated_at": "2026-08-28T23:21:08.268Z",
   "counts": {
     "plants": 0,
     "measurements": 0,
     "doses": 0,
     "day_log": 0,
-    "weather_daily": 4,
+    "weather_daily": 5,
     "audit_log": 4,
     "amendments": 0,
     "files": 0
@@ -29,7 +29,7 @@
       "et0_in": 0.248,
       "solar_mj": 26.6,
       "source": "open-meteo",
-      "updated_at": "2026-08-28T00:55:00.558+00:00"
+      "updated_at": "2026-08-28T17:51:18.89+00:00"
     },
     {
       "wx_date": "2026-08-25",
@@ -43,7 +43,7 @@
       "et0_in": 0.232,
       "solar_mj": 26,
       "source": "open-meteo",
-      "updated_at": "2026-08-28T00:55:00.558+00:00"
+      "updated_at": "2026-08-28T17:51:18.89+00:00"
     },
     {
       "wx_date": "2026-08-26",
@@ -57,21 +57,35 @@
       "et0_in": 0.236,
       "solar_mj": 25.5,
       "source": "open-meteo",
-      "updated_at": "2026-08-28T00:55:00.558+00:00"
+      "updated_at": "2026-08-28T17:51:18.89+00:00"
     },
     {
       "wx_date": "2026-08-27",
       "temp_max_f": 95.3,
       "temp_min_f": 77,
-      "temp_mean_f": 85.6,
+      "temp_mean_f": 85.7,
       "rain_in": 0,
       "humidity_pct": 75,
-      "cloud_pct": 7,
-      "wind_max_mph": 14.2,
+      "cloud_pct": 4,
+      "wind_max_mph": 14.5,
       "et0_in": 0.241,
       "solar_mj": 25.8,
       "source": "open-meteo",
-      "updated_at": "2026-08-28T00:55:00.558+00:00"
+      "updated_at": "2026-08-28T17:51:18.89+00:00"
+    },
+    {
+      "wx_date": "2026-08-28",
+      "temp_max_f": 94.3,
+      "temp_min_f": 78.4,
+      "temp_mean_f": 85.3,
+      "rain_in": 0,
+      "humidity_pct": 76,
+      "cloud_pct": 19,
+      "wind_max_mph": 15.2,
+      "et0_in": 0.232,
+      "solar_mj": 25.6,
+      "source": "open-meteo",
+      "updated_at": "2026-08-28T17:51:18.89+00:00"
     }
   ],
   "audit_log": [
