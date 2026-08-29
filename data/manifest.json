@@ -1,6 +1,6 @@
 {
   "app": "cotton-field-log",
-  "generated_at": "2026-08-28T23:21:08.268Z",
+  "generated_at": "2026-08-29T11:20:21.882Z",
   "counts": {
     "plants": 0,
     "measurements": 0,
@@ -11,7 +11,7 @@
     "amendments": 0,
     "files": 0
   },
-  "backups": 4,
+  "backups": 5,
   "pruned": 0,
   "analysis": {
     "total": 0,
