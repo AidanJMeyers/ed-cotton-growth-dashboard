@@ -7,7 +7,7 @@ here will be overwritten on the next run — record data in the app instead.
 This folder is the permanent record. The app is where the work happens; git is where
 it survives.
 
-Last snapshot: **2026-08-30T23:22:53.092Z**
+Last snapshot: **2026-08-31T11:24:36.213Z**
 
 | File | Rows | What it is |
 |---|---|---|
@@ -19,7 +19,7 @@ Last snapshot: **2026-08-30T23:22:53.092Z**
 | `amendments.csv` | 0 | Reason-for-change record: every value edited or removed after it was first saved, with initials and why |
 | `audit_log.csv` | 4 | Every change ever made: who, what, when. Written by a database trigger, so it cannot be skipped from the app |
 | `snapshot-latest.json` | — | Everything above in one file. This is what a restore reads |
-| `backups/` | 6 | Dated snapshots. Daily for 60 days; the 1st of each month is kept permanently |
+| `backups/` | 7 | Dated snapshots. Daily for 60 days; the 1st of each month is kept permanently |
 | `analysis/` | 0 | Copies of every analysis file uploaded through the app, with `index.csv` listing who uploaded what and when |
 
 ## Restoring
