@@ -1,12 +1,12 @@
 {
   "app": "cotton-field-log",
-  "generated_at": "2026-09-03T11:23:30.145Z",
+  "generated_at": "2026-09-03T23:23:33.275Z",
   "counts": {
     "plants": 0,
     "measurements": 0,
     "doses": 0,
     "day_log": 0,
-    "weather_daily": 8,
+    "weather_daily": 11,
     "audit_log": 4,
     "amendments": 0,
     "files": 0
