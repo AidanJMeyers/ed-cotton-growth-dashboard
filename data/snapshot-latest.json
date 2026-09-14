@@ -1,13 +1,13 @@
 {
   "app": "cotton-field-log",
   "version": 2,
-  "generated_at": "2026-09-14T11:25:42.482Z",
+  "generated_at": "2026-09-14T23:23:33.808Z",
   "counts": {
     "plants": 0,
     "measurements": 0,
     "doses": 0,
     "day_log": 0,
-    "weather_daily": 17,
+    "weather_daily": 22,
     "audit_log": 4,
     "amendments": 0,
     "files": 0
@@ -225,7 +225,7 @@
       "et0_in": 0.214,
       "solar_mj": 22.9,
       "source": "open-meteo",
-      "updated_at": "2026-09-09T22:49:40.994+00:00"
+      "updated_at": "2026-09-14T18:12:05.017+00:00"
     },
     {
       "wx_date": "2026-09-08",
@@ -239,7 +239,7 @@
       "et0_in": 0.209,
       "solar_mj": 22.1,
       "source": "open-meteo",
-      "updated_at": "2026-09-09T22:49:40.994+00:00"
+      "updated_at": "2026-09-14T18:12:05.02+00:00"
     },
     {
       "wx_date": "2026-09-09",
@@ -247,13 +247,83 @@
       "temp_min_f": 80.3,
       "temp_mean_f": 85.7,
       "rain_in": 0,
-      "humidity_pct": 79,
-      "cloud_pct": 19,
-      "wind_max_mph": 15.4,
-      "et0_in": 0.199,
-      "solar_mj": 21.3,
+      "humidity_pct": 80,
+      "cloud_pct": 23,
+      "wind_max_mph": 14.5,
+      "et0_in": 0.195,
+      "solar_mj": 21.4,
       "source": "open-meteo",
-      "updated_at": "2026-09-09T22:49:40.994+00:00"
+      "updated_at": "2026-09-14T18:12:05.02+00:00"
+    },
+    {
+      "wx_date": "2026-09-10",
+      "temp_max_f": 93.7,
+      "temp_min_f": 79.4,
+      "temp_mean_f": 85.8,
+      "rain_in": 0,
+      "humidity_pct": 79,
+      "cloud_pct": 44,
+      "wind_max_mph": 16.1,
+      "et0_in": 0.199,
+      "solar_mj": 20.5,
+      "source": "open-meteo",
+      "updated_at": "2026-09-14T18:12:05.02+00:00"
+    },
+    {
+      "wx_date": "2026-09-11",
+      "temp_max_f": 93.6,
+      "temp_min_f": 81.4,
+      "temp_mean_f": 87.1,
+      "rain_in": 0,
+      "humidity_pct": 75,
+      "cloud_pct": 10,
+      "wind_max_mph": 18.8,
+      "et0_in": 0.242,
+      "solar_mj": 24,
+      "source": "open-meteo",
+      "updated_at": "2026-09-14T18:12:05.02+00:00"
+    },
+    {
+      "wx_date": "2026-09-12",
+      "temp_max_f": 94.2,
+      "temp_min_f": 80.6,
+      "temp_mean_f": 86.8,
+      "rain_in": 0,
+      "humidity_pct": 76,
+      "cloud_pct": 23,
+      "wind_max_mph": 19.2,
+      "et0_in": 0.234,
+      "solar_mj": 23.2,
+      "source": "open-meteo",
+      "updated_at": "2026-09-14T18:12:05.02+00:00"
+    },
+    {
+      "wx_date": "2026-09-13",
+      "temp_max_f": 93.9,
+      "temp_min_f": 82,
+      "temp_mean_f": 86.7,
+      "rain_in": 0,
+      "humidity_pct": 79,
+      "cloud_pct": 23,
+      "wind_max_mph": 17.1,
+      "et0_in": 0.209,
+      "solar_mj": 21.6,
+      "source": "open-meteo",
+      "updated_at": "2026-09-14T18:12:05.02+00:00"
+    },
+    {
+      "wx_date": "2026-09-14",
+      "temp_max_f": 94,
+      "temp_min_f": 80.7,
+      "temp_mean_f": 86.5,
+      "rain_in": 0,
+      "humidity_pct": 76,
+      "cloud_pct": 20,
+      "wind_max_mph": 16.2,
+      "et0_in": 0.234,
+      "solar_mj": 23.5,
+      "source": "open-meteo",
+      "updated_at": "2026-09-14T18:12:05.02+00:00"
     }
   ],
   "audit_log": [
