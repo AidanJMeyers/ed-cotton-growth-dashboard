@@ -1,0 +1,3 @@
+id,at,change_date,initials,actor,action,tbl,row_key,field,old_value,new_value,reason
+4,2026-09-17T23:22:14.460672+00:00,2026-09-17,ED,Emma,edit,measurements,2026-09-15 / plant 12 (E3),leaves,2,3,Transcription error
+5,2026-09-17T23:22:21.633834+00:00,2026-09-17,ED,Emma,edit,measurements,2026-09-15 / plant 10 (E1),leaves,3,2,Transcription error

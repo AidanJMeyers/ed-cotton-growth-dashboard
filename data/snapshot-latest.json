@@ -1,15 +1,15 @@
 {
   "app": "cotton-field-log",
   "version": 2,
-  "generated_at": "2026-09-17T11:25:10.622Z",
+  "generated_at": "2026-09-17T23:23:20.814Z",
   "counts": {
     "plants": 12,
     "measurements": 84,
     "doses": 6,
     "day_log": 5,
-    "weather_daily": 23,
-    "audit_log": 311,
-    "amendments": 0,
+    "weather_daily": 25,
+    "audit_log": 313,
+    "amendments": 2,
     "files": 0
   },
   "plants": [
@@ -1183,13 +1183,13 @@
       "obs_date": "2026-09-15",
       "plant_id": 10,
       "height_cm": 6,
-      "leaves": 3,
+      "leaves": 2,
       "internode_cm": null,
       "spad": null,
       "lai": null,
       "note": null,
       "recorded_by": "Emma",
-      "updated_at": "2026-09-15T22:25:59.415+00:00"
+      "updated_at": "2026-09-17T23:22:21.584+00:00"
     },
     {
       "obs_date": "2026-09-15",
@@ -1207,13 +1207,13 @@
       "obs_date": "2026-09-15",
       "plant_id": 12,
       "height_cm": 9.5,
-      "leaves": 2,
+      "leaves": 3,
       "internode_cm": null,
       "spad": null,
       "lai": null,
       "note": null,
       "recorded_by": "Emma",
-      "updated_at": "2026-09-15T22:26:17.773+00:00"
+      "updated_at": "2026-09-17T23:22:14.512+00:00"
     }
   ],
   "doses": [
@@ -1584,7 +1584,7 @@
       "et0_in": 0.199,
       "solar_mj": 20.5,
       "source": "open-meteo",
-      "updated_at": "2026-09-15T17:16:39.5+00:00"
+      "updated_at": "2026-09-17T14:44:47.402+00:00"
     },
     {
       "wx_date": "2026-09-11",
@@ -1598,7 +1598,7 @@
       "et0_in": 0.242,
       "solar_mj": 24,
       "source": "open-meteo",
-      "updated_at": "2026-09-15T17:16:39.5+00:00"
+      "updated_at": "2026-09-17T14:44:47.402+00:00"
     },
     {
       "wx_date": "2026-09-12",
@@ -1612,7 +1612,7 @@
       "et0_in": 0.234,
       "solar_mj": 23.2,
       "source": "open-meteo",
-      "updated_at": "2026-09-15T17:16:39.5+00:00"
+      "updated_at": "2026-09-17T14:44:47.402+00:00"
     },
     {
       "wx_date": "2026-09-13",
@@ -1626,7 +1626,7 @@
       "et0_in": 0.209,
       "solar_mj": 21.6,
       "source": "open-meteo",
-      "updated_at": "2026-09-15T17:16:39.5+00:00"
+      "updated_at": "2026-09-17T14:44:47.402+00:00"
     },
     {
       "wx_date": "2026-09-14",
@@ -1640,21 +1640,49 @@
       "et0_in": 0.226,
       "solar_mj": 23.2,
       "source": "open-meteo",
-      "updated_at": "2026-09-15T17:16:39.5+00:00"
+      "updated_at": "2026-09-17T14:44:47.402+00:00"
     },
     {
       "wx_date": "2026-09-15",
-      "temp_max_f": 93.8,
+      "temp_max_f": 94.2,
       "temp_min_f": 80.9,
       "temp_mean_f": 86.2,
       "rain_in": 0,
-      "humidity_pct": 75,
-      "cloud_pct": 3,
-      "wind_max_mph": 16,
-      "et0_in": 0.235,
+      "humidity_pct": 77,
+      "cloud_pct": 10,
+      "wind_max_mph": 16.5,
+      "et0_in": 0.232,
       "solar_mj": 24.2,
       "source": "open-meteo",
-      "updated_at": "2026-09-15T17:16:39.5+00:00"
+      "updated_at": "2026-09-17T14:44:47.402+00:00"
+    },
+    {
+      "wx_date": "2026-09-16",
+      "temp_max_f": 92.1,
+      "temp_min_f": 78.7,
+      "temp_mean_f": 85.4,
+      "rain_in": 0,
+      "humidity_pct": 80,
+      "cloud_pct": 17,
+      "wind_max_mph": 13.2,
+      "et0_in": 0.19,
+      "solar_mj": 20.9,
+      "source": "open-meteo",
+      "updated_at": "2026-09-17T14:44:47.402+00:00"
+    },
+    {
+      "wx_date": "2026-09-17",
+      "temp_max_f": 89.4,
+      "temp_min_f": 79.8,
+      "temp_mean_f": 84.3,
+      "rain_in": 0.03,
+      "humidity_pct": 81,
+      "cloud_pct": 66,
+      "wind_max_mph": 15.3,
+      "et0_in": 0.154,
+      "solar_mj": 16.3,
+      "source": "open-meteo",
+      "updated_at": "2026-09-17T14:44:47.402+00:00"
     }
   ],
   "audit_log": [
@@ -6250,8 +6278,59 @@
       "changes": {
         "height_cm": 9.5
       }
+    },
+    {
+      "id": 312,
+      "at": "2026-09-17T23:22:14.862762+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-15 / plant 12",
+      "changes": {
+        "leaves": 3
+      }
+    },
+    {
+      "id": 313,
+      "at": "2026-09-17T23:22:21.768822+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-15 / plant 10",
+      "changes": {
+        "leaves": 2
+      }
     }
   ],
-  "amendments": [],
+  "amendments": [
+    {
+      "id": 4,
+      "at": "2026-09-17T23:22:14.460672+00:00",
+      "change_date": "2026-09-17",
+      "initials": "ED",
+      "actor": "Emma",
+      "action": "edit",
+      "tbl": "measurements",
+      "row_key": "2026-09-15 / plant 12 (E3)",
+      "field": "leaves",
+      "old_value": "2",
+      "new_value": "3",
+      "reason": "Transcription error"
+    },
+    {
+      "id": 5,
+      "at": "2026-09-17T23:22:21.633834+00:00",
+      "change_date": "2026-09-17",
+      "initials": "ED",
+      "actor": "Emma",
+      "action": "edit",
+      "tbl": "measurements",
+      "row_key": "2026-09-15 / plant 10 (E1)",
+      "field": "leaves",
+      "old_value": "3",
+      "new_value": "2",
+      "reason": "Transcription error"
+    }
+  ],
   "files": []
 }

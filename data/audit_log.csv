@@ -310,3 +310,5 @@ id,at,actor,action,tbl,row_key,changes
 309,2026-09-15T22:26:06.446121+00:00,Emma,insert,measurements,2026-09-15 / plant 12,"{""lai"":null,""note"":null,""spad"":null,""leaves"":null,""obs_date"":""2026-09-15"",""plant_id"":12,""height_cm"":8.5,""updated_at"":""2026-09-15T22:26:06.268+00:00"",""recorded_by"":""Emma"",""internode_cm"":null}"
 310,2026-09-15T22:26:08.056625+00:00,Emma,update,measurements,2026-09-15 / plant 12,"{""leaves"":2}"
 311,2026-09-15T22:26:17.953752+00:00,Emma,update,measurements,2026-09-15 / plant 12,"{""height_cm"":9.5}"
+312,2026-09-17T23:22:14.862762+00:00,Emma,update,measurements,2026-09-15 / plant 12,"{""leaves"":3}"
+313,2026-09-17T23:22:21.768822+00:00,Emma,update,measurements,2026-09-15 / plant 10,"{""leaves"":2}"
