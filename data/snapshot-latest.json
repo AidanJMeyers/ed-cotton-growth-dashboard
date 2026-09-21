@@ -1,14 +1,14 @@
 {
   "app": "cotton-field-log",
   "version": 2,
-  "generated_at": "2026-09-21T11:26:02.646Z",
+  "generated_at": "2026-09-21T23:26:36.326Z",
   "counts": {
     "plants": 12,
-    "measurements": 84,
+    "measurements": 113,
     "doses": 6,
     "day_log": 5,
-    "weather_daily": 26,
-    "audit_log": 313,
+    "weather_daily": 29,
+    "audit_log": 380,
     "amendments": 2,
     "files": 0
   },
@@ -428,24 +428,24 @@
       "plant_id": 7,
       "height_cm": 0,
       "leaves": 0,
-      "internode_cm": 0,
+      "internode_cm": null,
       "spad": null,
       "lai": null,
       "note": "no growth",
       "recorded_by": "Emma",
-      "updated_at": "2026-09-15T22:22:51.431+00:00"
+      "updated_at": "2026-09-21T18:13:45.017+00:00"
     },
     {
       "obs_date": "2026-09-08",
       "plant_id": 8,
       "height_cm": 0,
       "leaves": 0,
-      "internode_cm": 0,
+      "internode_cm": null,
       "spad": null,
       "lai": null,
       "note": "emergence",
       "recorded_by": "Emma",
-      "updated_at": "2026-09-15T22:22:48.355+00:00"
+      "updated_at": "2026-09-21T18:13:46.61+00:00"
     },
     {
       "obs_date": "2026-09-08",
@@ -464,36 +464,36 @@
       "plant_id": 10,
       "height_cm": 0,
       "leaves": 0,
-      "internode_cm": 0,
+      "internode_cm": null,
       "spad": null,
       "lai": null,
       "note": "emergence",
       "recorded_by": "Emma",
-      "updated_at": "2026-09-15T22:22:55.277+00:00"
+      "updated_at": "2026-09-21T18:13:51.698+00:00"
     },
     {
       "obs_date": "2026-09-08",
       "plant_id": 11,
       "height_cm": 0,
       "leaves": 0,
-      "internode_cm": 0,
+      "internode_cm": null,
       "spad": null,
       "lai": null,
       "note": "emergence",
       "recorded_by": "Emma",
-      "updated_at": "2026-09-15T22:22:58.541+00:00"
+      "updated_at": "2026-09-21T18:13:50.377+00:00"
     },
     {
       "obs_date": "2026-09-08",
       "plant_id": 12,
       "height_cm": 0,
       "leaves": 0,
-      "internode_cm": 0,
+      "internode_cm": null,
       "spad": null,
       "lai": null,
       "note": "emergence",
       "recorded_by": "Emma",
-      "updated_at": "2026-09-15T22:23:02.422+00:00"
+      "updated_at": "2026-09-21T18:13:49.019+00:00"
     },
     {
       "obs_date": "2026-09-09",
@@ -1214,6 +1214,354 @@
       "note": null,
       "recorded_by": "Emma",
       "updated_at": "2026-09-17T23:22:14.512+00:00"
+    },
+    {
+      "obs_date": "2026-09-16",
+      "plant_id": 1,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:24:59.095+00:00"
+    },
+    {
+      "obs_date": "2026-09-16",
+      "plant_id": 2,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:25:00.5+00:00"
+    },
+    {
+      "obs_date": "2026-09-16",
+      "plant_id": 3,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:25:01.859+00:00"
+    },
+    {
+      "obs_date": "2026-09-16",
+      "plant_id": 4,
+      "height_cm": 6.5,
+      "leaves": 2,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:26:10.622+00:00"
+    },
+    {
+      "obs_date": "2026-09-16",
+      "plant_id": 5,
+      "height_cm": 7.5,
+      "leaves": 3,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:26:25.22+00:00"
+    },
+    {
+      "obs_date": "2026-09-16",
+      "plant_id": 6,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:25:09.88+00:00"
+    },
+    {
+      "obs_date": "2026-09-16",
+      "plant_id": 7,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:25:16.619+00:00"
+    },
+    {
+      "obs_date": "2026-09-16",
+      "plant_id": 8,
+      "height_cm": 7.5,
+      "leaves": 3,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:26:34.27+00:00"
+    },
+    {
+      "obs_date": "2026-09-16",
+      "plant_id": 9,
+      "height_cm": 8,
+      "leaves": 3,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:26:40.861+00:00"
+    },
+    {
+      "obs_date": "2026-09-16",
+      "plant_id": 10,
+      "height_cm": 7,
+      "leaves": 2,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:26:47.468+00:00"
+    },
+    {
+      "obs_date": "2026-09-16",
+      "plant_id": 11,
+      "height_cm": 7.5,
+      "leaves": 2,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:26:54.019+00:00"
+    },
+    {
+      "obs_date": "2026-09-16",
+      "plant_id": 12,
+      "height_cm": 10,
+      "leaves": 4,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:27:00.735+00:00"
+    },
+    {
+      "obs_date": "2026-09-17",
+      "plant_id": 1,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:34:38.921+00:00"
+    },
+    {
+      "obs_date": "2026-09-17",
+      "plant_id": 2,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:34:40.774+00:00"
+    },
+    {
+      "obs_date": "2026-09-17",
+      "plant_id": 3,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:34:42.115+00:00"
+    },
+    {
+      "obs_date": "2026-09-17",
+      "plant_id": 6,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:35:03.167+00:00"
+    },
+    {
+      "obs_date": "2026-09-17",
+      "plant_id": 7,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:35:05.182+00:00"
+    },
+    {
+      "obs_date": "2026-09-21",
+      "plant_id": 1,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:23:40.331+00:00"
+    },
+    {
+      "obs_date": "2026-09-21",
+      "plant_id": 2,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:23:42.576+00:00"
+    },
+    {
+      "obs_date": "2026-09-21",
+      "plant_id": 3,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:23:44.24+00:00"
+    },
+    {
+      "obs_date": "2026-09-21",
+      "plant_id": 4,
+      "height_cm": 6,
+      "leaves": 4,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:23:58.913+00:00"
+    },
+    {
+      "obs_date": "2026-09-21",
+      "plant_id": 5,
+      "height_cm": 12,
+      "leaves": 5,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:24:08.491+00:00"
+    },
+    {
+      "obs_date": "2026-09-21",
+      "plant_id": 6,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:23:49.076+00:00"
+    },
+    {
+      "obs_date": "2026-09-21",
+      "plant_id": 7,
+      "height_cm": 0,
+      "leaves": 0,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:24:13.532+00:00"
+    },
+    {
+      "obs_date": "2026-09-21",
+      "plant_id": 8,
+      "height_cm": 14,
+      "leaves": 5,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:24:18.819+00:00"
+    },
+    {
+      "obs_date": "2026-09-21",
+      "plant_id": 9,
+      "height_cm": 14,
+      "leaves": 4,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:24:23.506+00:00"
+    },
+    {
+      "obs_date": "2026-09-21",
+      "plant_id": 10,
+      "height_cm": 11.5,
+      "leaves": 4,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:24:31.432+00:00"
+    },
+    {
+      "obs_date": "2026-09-21",
+      "plant_id": 11,
+      "height_cm": 12,
+      "leaves": 4,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:24:35.199+00:00"
+    },
+    {
+      "obs_date": "2026-09-21",
+      "plant_id": 12,
+      "height_cm": 17,
+      "leaves": 5,
+      "internode_cm": null,
+      "spad": null,
+      "lai": null,
+      "note": null,
+      "recorded_by": "Emma",
+      "updated_at": "2026-09-21T18:24:38.959+00:00"
     }
   ],
   "doses": [
@@ -1640,7 +1988,7 @@
       "et0_in": 0.226,
       "solar_mj": 23.2,
       "source": "open-meteo",
-      "updated_at": "2026-09-18T20:43:38.63+00:00"
+      "updated_at": "2026-09-21T18:12:54.309+00:00"
     },
     {
       "wx_date": "2026-09-15",
@@ -1654,7 +2002,7 @@
       "et0_in": 0.232,
       "solar_mj": 24.2,
       "source": "open-meteo",
-      "updated_at": "2026-09-18T20:43:38.63+00:00"
+      "updated_at": "2026-09-21T18:12:54.309+00:00"
     },
     {
       "wx_date": "2026-09-16",
@@ -1668,7 +2016,7 @@
       "et0_in": 0.19,
       "solar_mj": 20.9,
       "source": "open-meteo",
-      "updated_at": "2026-09-18T20:43:38.63+00:00"
+      "updated_at": "2026-09-21T18:12:54.309+00:00"
     },
     {
       "wx_date": "2026-09-17",
@@ -1682,21 +2030,63 @@
       "et0_in": 0.161,
       "solar_mj": 18.1,
       "source": "open-meteo",
-      "updated_at": "2026-09-18T20:43:38.63+00:00"
+      "updated_at": "2026-09-21T18:12:54.309+00:00"
     },
     {
       "wx_date": "2026-09-18",
-      "temp_max_f": 91.4,
+      "temp_max_f": 89.4,
       "temp_min_f": 79.8,
-      "temp_mean_f": 84.9,
+      "temp_mean_f": 84,
       "rain_in": 0,
-      "humidity_pct": 79,
-      "cloud_pct": 55,
-      "wind_max_mph": 11.9,
-      "et0_in": 0.175,
-      "solar_mj": 18.5,
+      "humidity_pct": 84,
+      "cloud_pct": 63,
+      "wind_max_mph": 11.1,
+      "et0_in": 0.158,
+      "solar_mj": 18,
       "source": "open-meteo",
-      "updated_at": "2026-09-18T20:43:38.63+00:00"
+      "updated_at": "2026-09-21T18:12:54.309+00:00"
+    },
+    {
+      "wx_date": "2026-09-19",
+      "temp_max_f": 92.2,
+      "temp_min_f": 77.5,
+      "temp_mean_f": 84.4,
+      "rain_in": 0,
+      "humidity_pct": 76,
+      "cloud_pct": 19,
+      "wind_max_mph": 13,
+      "et0_in": 0.201,
+      "solar_mj": 21.5,
+      "source": "open-meteo",
+      "updated_at": "2026-09-21T18:12:54.309+00:00"
+    },
+    {
+      "wx_date": "2026-09-20",
+      "temp_max_f": 92.8,
+      "temp_min_f": 77,
+      "temp_mean_f": 84.4,
+      "rain_in": 0,
+      "humidity_pct": 78,
+      "cloud_pct": 29,
+      "wind_max_mph": 12,
+      "et0_in": 0.186,
+      "solar_mj": 20.7,
+      "source": "open-meteo",
+      "updated_at": "2026-09-21T18:12:54.309+00:00"
+    },
+    {
+      "wx_date": "2026-09-21",
+      "temp_max_f": 93.6,
+      "temp_min_f": 78.9,
+      "temp_mean_f": 85.6,
+      "rain_in": 0,
+      "humidity_pct": 74,
+      "cloud_pct": 22,
+      "wind_max_mph": 13.8,
+      "et0_in": 0.203,
+      "solar_mj": 20.9,
+      "source": "open-meteo",
+      "updated_at": "2026-09-21T18:12:54.309+00:00"
     }
   ],
   "audit_log": [
@@ -6313,6 +6703,1040 @@
       "row_key": "2026-09-15 / plant 10",
       "changes": {
         "leaves": 2
+      }
+    },
+    {
+      "id": 314,
+      "at": "2026-09-21T18:13:45.271325+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-08 / plant 7",
+      "changes": {
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 315,
+      "at": "2026-09-21T18:13:46.770921+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-08 / plant 8",
+      "changes": {
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 316,
+      "at": "2026-09-21T18:13:49.19603+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-08 / plant 12",
+      "changes": {
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 317,
+      "at": "2026-09-21T18:13:50.52538+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-08 / plant 11",
+      "changes": {
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 318,
+      "at": "2026-09-21T18:13:51.839933+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-08 / plant 10",
+      "changes": {
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 319,
+      "at": "2026-09-21T18:23:38.95852+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 1",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-21",
+        "plant_id": 1,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:23:38.317+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 320,
+      "at": "2026-09-21T18:23:40.483563+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 1",
+      "changes": {
+        "leaves": 0
+      }
+    },
+    {
+      "id": 321,
+      "at": "2026-09-21T18:23:41.694937+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 2",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-21",
+        "plant_id": 2,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:23:41.55+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 322,
+      "at": "2026-09-21T18:23:42.721225+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 2",
+      "changes": {
+        "leaves": 0
+      }
+    },
+    {
+      "id": 323,
+      "at": "2026-09-21T18:23:43.718714+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 3",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-21",
+        "plant_id": 3,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:23:43.575+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 324,
+      "at": "2026-09-21T18:23:44.385566+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 3",
+      "changes": {
+        "leaves": 0
+      }
+    },
+    {
+      "id": 325,
+      "at": "2026-09-21T18:23:48.612283+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 6",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-21",
+        "plant_id": 6,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:23:48.417+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 326,
+      "at": "2026-09-21T18:23:49.224697+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 6",
+      "changes": {
+        "leaves": 0
+      }
+    },
+    {
+      "id": 327,
+      "at": "2026-09-21T18:23:53.189317+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 4",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-21",
+        "plant_id": 4,
+        "height_cm": 6,
+        "updated_at": "2026-09-21T18:23:53.061+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 328,
+      "at": "2026-09-21T18:23:59.04752+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 4",
+      "changes": {
+        "leaves": 4
+      }
+    },
+    {
+      "id": 329,
+      "at": "2026-09-21T18:24:06.566854+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 5",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-21",
+        "plant_id": 5,
+        "height_cm": 12,
+        "updated_at": "2026-09-21T18:24:06.434+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 330,
+      "at": "2026-09-21T18:24:08.637008+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 5",
+      "changes": {
+        "leaves": 5
+      }
+    },
+    {
+      "id": 331,
+      "at": "2026-09-21T18:24:13.160544+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 7",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-21",
+        "plant_id": 7,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:24:12.814+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 332,
+      "at": "2026-09-21T18:24:13.654368+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 7",
+      "changes": {
+        "leaves": 0
+      }
+    },
+    {
+      "id": 333,
+      "at": "2026-09-21T18:24:16.21616+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 8",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-21",
+        "plant_id": 8,
+        "height_cm": 14,
+        "updated_at": "2026-09-21T18:24:16.1+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 334,
+      "at": "2026-09-21T18:24:18.937328+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 8",
+      "changes": {
+        "leaves": 5
+      }
+    },
+    {
+      "id": 335,
+      "at": "2026-09-21T18:24:21.293163+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 9",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-21",
+        "plant_id": 9,
+        "height_cm": 14,
+        "updated_at": "2026-09-21T18:24:21.179+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 336,
+      "at": "2026-09-21T18:24:23.619752+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 9",
+      "changes": {
+        "leaves": 4
+      }
+    },
+    {
+      "id": 337,
+      "at": "2026-09-21T18:24:29.483022+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 10",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-21",
+        "plant_id": 10,
+        "height_cm": 11.5,
+        "updated_at": "2026-09-21T18:24:29.377+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 338,
+      "at": "2026-09-21T18:24:31.541565+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 10",
+      "changes": {
+        "leaves": 4
+      }
+    },
+    {
+      "id": 339,
+      "at": "2026-09-21T18:24:33.293196+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 11",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-21",
+        "plant_id": 11,
+        "height_cm": 12,
+        "updated_at": "2026-09-21T18:24:33.186+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 340,
+      "at": "2026-09-21T18:24:35.315419+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 11",
+      "changes": {
+        "leaves": 4
+      }
+    },
+    {
+      "id": 341,
+      "at": "2026-09-21T18:24:36.990785+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 12",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-21",
+        "plant_id": 12,
+        "height_cm": 17,
+        "updated_at": "2026-09-21T18:24:36.883+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 342,
+      "at": "2026-09-21T18:24:39.063503+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-21 / plant 12",
+      "changes": {
+        "leaves": 5
+      }
+    },
+    {
+      "id": 343,
+      "at": "2026-09-21T18:24:58.419577+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 1",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-16",
+        "plant_id": 1,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:24:58.226+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 344,
+      "at": "2026-09-21T18:24:59.210308+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 1",
+      "changes": {
+        "leaves": 0
+      }
+    },
+    {
+      "id": 345,
+      "at": "2026-09-21T18:25:00.625997+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 2",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": 0,
+        "obs_date": "2026-09-16",
+        "plant_id": 2,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:25:00.5+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 346,
+      "at": "2026-09-21T18:25:01.977564+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 3",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": 0,
+        "obs_date": "2026-09-16",
+        "plant_id": 3,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:25:01.859+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 347,
+      "at": "2026-09-21T18:25:08.907612+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 6",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-16",
+        "plant_id": 6,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:25:08.724+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 348,
+      "at": "2026-09-21T18:25:10.000743+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 6",
+      "changes": {
+        "leaves": 0
+      }
+    },
+    {
+      "id": 349,
+      "at": "2026-09-21T18:25:15.881625+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 7",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-16",
+        "plant_id": 7,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:25:15.759+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 350,
+      "at": "2026-09-21T18:25:16.735325+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 7",
+      "changes": {
+        "leaves": 0
+      }
+    },
+    {
+      "id": 351,
+      "at": "2026-09-21T18:25:19.76478+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 4",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-16",
+        "plant_id": 4,
+        "height_cm": 3,
+        "updated_at": "2026-09-21T18:25:19.663+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 352,
+      "at": "2026-09-21T18:25:22.920395+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 4",
+      "changes": {
+        "leaves": 2
+      }
+    },
+    {
+      "id": 353,
+      "at": "2026-09-21T18:25:28.800692+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 4",
+      "changes": {
+        "height_cm": 4
+      }
+    },
+    {
+      "id": 354,
+      "at": "2026-09-21T18:25:39.21953+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 4",
+      "changes": {
+        "height_cm": null
+      }
+    },
+    {
+      "id": 355,
+      "at": "2026-09-21T18:26:10.790902+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 4",
+      "changes": {
+        "height_cm": 6.5
+      }
+    },
+    {
+      "id": 356,
+      "at": "2026-09-21T18:26:17.139279+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 5",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-16",
+        "plant_id": 5,
+        "height_cm": 6,
+        "updated_at": "2026-09-21T18:26:17.024+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 357,
+      "at": "2026-09-21T18:26:19.361457+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 5",
+      "changes": {
+        "height_cm": 6.5
+      }
+    },
+    {
+      "id": 358,
+      "at": "2026-09-21T18:26:20.987306+00:00",
+      "actor": "Emma",
+      "action": "delete",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 5",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-16",
+        "plant_id": 5,
+        "height_cm": 6.5,
+        "updated_at": "2026-09-21T18:26:19.238+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 359,
+      "at": "2026-09-21T18:26:22.05783+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 5",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-16",
+        "plant_id": 5,
+        "height_cm": 7.5,
+        "updated_at": "2026-09-21T18:26:21.948+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 360,
+      "at": "2026-09-21T18:26:25.342836+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 5",
+      "changes": {
+        "leaves": 3
+      }
+    },
+    {
+      "id": 361,
+      "at": "2026-09-21T18:26:32.175784+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 8",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-16",
+        "plant_id": 8,
+        "height_cm": 7.5,
+        "updated_at": "2026-09-21T18:26:32.065+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 362,
+      "at": "2026-09-21T18:26:34.384574+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 8",
+      "changes": {
+        "leaves": 3
+      }
+    },
+    {
+      "id": 363,
+      "at": "2026-09-21T18:26:38.488021+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 9",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-16",
+        "plant_id": 9,
+        "height_cm": 8,
+        "updated_at": "2026-09-21T18:26:38.384+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 364,
+      "at": "2026-09-21T18:26:40.963096+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 9",
+      "changes": {
+        "leaves": 3
+      }
+    },
+    {
+      "id": 365,
+      "at": "2026-09-21T18:26:45.6801+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 10",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-16",
+        "plant_id": 10,
+        "height_cm": 7,
+        "updated_at": "2026-09-21T18:26:45.581+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 366,
+      "at": "2026-09-21T18:26:47.566193+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 10",
+      "changes": {
+        "leaves": 2
+      }
+    },
+    {
+      "id": 367,
+      "at": "2026-09-21T18:26:51.167591+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 11",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-16",
+        "plant_id": 11,
+        "height_cm": 7.5,
+        "updated_at": "2026-09-21T18:26:51.064+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 368,
+      "at": "2026-09-21T18:26:54.122932+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 11",
+      "changes": {
+        "leaves": 2
+      }
+    },
+    {
+      "id": 369,
+      "at": "2026-09-21T18:26:56.698499+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 12",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-16",
+        "plant_id": 12,
+        "height_cm": 1,
+        "updated_at": "2026-09-21T18:26:56.599+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 370,
+      "at": "2026-09-21T18:26:57.730159+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 12",
+      "changes": {
+        "height_cm": 10
+      }
+    },
+    {
+      "id": 371,
+      "at": "2026-09-21T18:27:00.83516+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-16 / plant 12",
+      "changes": {
+        "leaves": 4
+      }
+    },
+    {
+      "id": 372,
+      "at": "2026-09-21T18:34:38.082446+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-17 / plant 1",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-17",
+        "plant_id": 1,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:34:37.547+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 373,
+      "at": "2026-09-21T18:34:39.03483+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-17 / plant 1",
+      "changes": {
+        "leaves": 0
+      }
+    },
+    {
+      "id": 374,
+      "at": "2026-09-21T18:34:40.246969+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-17 / plant 2",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-17",
+        "plant_id": 2,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:34:40.114+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 375,
+      "at": "2026-09-21T18:34:40.885668+00:00",
+      "actor": "Emma",
+      "action": "update",
+      "tbl": "measurements",
+      "row_key": "2026-09-17 / plant 2",
+      "changes": {
+        "leaves": 0
+      }
+    },
+    {
+      "id": 376,
+      "at": "2026-09-21T18:34:42.250785+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-17 / plant 3",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": 0,
+        "obs_date": "2026-09-17",
+        "plant_id": 3,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:34:42.115+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 377,
+      "at": "2026-09-21T18:34:59.791826+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-17 / plant 4",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-17",
+        "plant_id": 4,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:34:59.65+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 378,
+      "at": "2026-09-21T18:35:01.303638+00:00",
+      "actor": "Emma",
+      "action": "delete",
+      "tbl": "measurements",
+      "row_key": "2026-09-17 / plant 4",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": null,
+        "obs_date": "2026-09-17",
+        "plant_id": 4,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:34:59.65+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 379,
+      "at": "2026-09-21T18:35:03.287728+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-17 / plant 6",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": 0,
+        "obs_date": "2026-09-17",
+        "plant_id": 6,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:35:03.167+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
+      }
+    },
+    {
+      "id": 380,
+      "at": "2026-09-21T18:35:05.281408+00:00",
+      "actor": "Emma",
+      "action": "insert",
+      "tbl": "measurements",
+      "row_key": "2026-09-17 / plant 7",
+      "changes": {
+        "lai": null,
+        "note": null,
+        "spad": null,
+        "leaves": 0,
+        "obs_date": "2026-09-17",
+        "plant_id": 7,
+        "height_cm": 0,
+        "updated_at": "2026-09-21T18:35:05.182+00:00",
+        "recorded_by": "Emma",
+        "internode_cm": null
       }
     }
   ],

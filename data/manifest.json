@@ -1,13 +1,13 @@
 {
   "app": "cotton-field-log",
-  "generated_at": "2026-09-21T11:26:02.646Z",
+  "generated_at": "2026-09-21T23:26:36.326Z",
   "counts": {
     "plants": 12,
-    "measurements": 84,
+    "measurements": 113,
     "doses": 6,
     "day_log": 5,
-    "weather_daily": 26,
-    "audit_log": 313,
+    "weather_daily": 29,
+    "audit_log": 380,
     "amendments": 2,
     "files": 0
   },
@@ -18,8 +18,8 @@
     "latest": null
   },
   "active_last_7_days": {
-    "Emma": 309
+    "Emma": 376
   },
-  "last_measurement": "2026-09-15",
+  "last_measurement": "2026-09-21",
   "last_dose": "2026-09-04"
 }
