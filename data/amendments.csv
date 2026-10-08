@@ -1,3 +1,5 @@
 id,at,change_date,initials,actor,action,tbl,row_key,field,old_value,new_value,reason
 4,2026-09-17T23:22:14.460672+00:00,2026-09-17,ED,Emma,edit,measurements,2026-09-15 / plant 12 (E3),leaves,2,3,Transcription error
 5,2026-09-17T23:22:21.633834+00:00,2026-09-17,ED,Emma,edit,measurements,2026-09-15 / plant 10 (E1),leaves,3,2,Transcription error
+6,2026-10-08T18:00:13.267832+00:00,2026-10-08,ED,Emma,edit,measurements,2026-09-15 / plant 4 (L1),height_cm,6,,Transcription error- I went through to update values for current days and it was telling me there was a decline in growth. I went back through my notes and previous logged days to see what the error was.
+7,2026-10-08T18:01:38.69213+00:00,2026-10-08,ED,Emma,edit,measurements,2026-09-16 / plant 4 (L1),height_cm,6.5,,Transcription error
