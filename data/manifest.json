@@ -1,18 +1,18 @@
 {
   "app": "cotton-field-log",
-  "generated_at": "2026-11-04T03:01:54.096Z",
+  "generated_at": "2026-11-04T18:38:02.042Z",
   "counts": {
     "plants": 12,
-    "measurements": 276,
+    "measurements": 483,
     "doses": 6,
-    "day_log": 7,
-    "weather_daily": 60,
-    "audit_log": 722,
+    "day_log": 10,
+    "weather_daily": 73,
+    "audit_log": 1395,
     "amendments": 4,
     "files": 1
   },
   "backups": 61,
-  "pruned": 1,
+  "pruned": 0,
   "analysis": {
     "total": 1,
     "latest": {
@@ -25,7 +25,9 @@
       "storage_path": "1791221731967_Summer Cotton Growth.xlsx"
     }
   },
-  "active_last_7_days": {},
-  "last_measurement": "2026-10-07",
+  "active_last_7_days": {
+    "Emma": 673
+  },
+  "last_measurement": "2026-11-02",
   "last_dose": "2026-09-04"
 }

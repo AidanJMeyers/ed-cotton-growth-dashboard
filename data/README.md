@@ -7,17 +7,17 @@ here will be overwritten on the next run — record data in the app instead.
 This folder is the permanent record. The app is where the work happens; git is where
 it survives.
 
-Last snapshot: **2026-11-04T03:01:54.096Z**
+Last snapshot: **2026-11-04T18:38:02.042Z**
 
 | File | Rows | What it is |
 |---|---|---|
 | `plants.csv` | 12 | One row per plant: label, treatment, rep, container, sowing date, depth, seeds |
-| `measurements.csv` | 276 | One row per plant per day. Blank means not measured, which is not the same as zero |
+| `measurements.csv` | 483 | One row per plant per day. Blank means not measured, which is not the same as zero |
 | `doses.csv` | 6 | One row per plant per Microcystis exposure: strength, volume, stock mL |
-| `day_log.csv` | 7 | One row per day: the time measurements were taken, plus the day note |
-| `weather_daily.csv` | 60 | Daily conditions at the plot from Open-Meteo, including DD60 heat units |
+| `day_log.csv` | 10 | One row per day: the time measurements were taken, plus the day note |
+| `weather_daily.csv` | 73 | Daily conditions at the plot from Open-Meteo, including DD60 heat units |
 | `amendments.csv` | 4 | Reason-for-change record: every value edited or removed after it was first saved, with initials and why |
-| `audit_log.csv` | 722 | Every change ever made: who, what, when. Written by a database trigger, so it cannot be skipped from the app |
+| `audit_log.csv` | 1395 | Every change ever made: who, what, when. Written by a database trigger, so it cannot be skipped from the app |
 | `snapshot-latest.json` | — | Everything above in one file. This is what a restore reads |
 | `backups/` | 61 | Dated snapshots. Daily for 60 days; the 1st of each month is kept permanently |
 | `analysis/` | 1 | Copies of every analysis file uploaded through the app, with `index.csv` listing who uploaded what and when |
