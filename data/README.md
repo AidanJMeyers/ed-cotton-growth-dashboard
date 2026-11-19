@@ -7,7 +7,7 @@ here will be overwritten on the next run — record data in the app instead.
 This folder is the permanent record. The app is where the work happens; git is where
 it survives.
 
-Last snapshot: **2026-11-19T04:14:08.458Z**
+Last snapshot: **2026-11-19T19:29:07.031Z**
 
 | File | Rows | What it is |
 |---|---|---|
